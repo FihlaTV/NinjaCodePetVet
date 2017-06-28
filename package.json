@@ -1,0 +1,28 @@
+{
+  "name": "ninjacodepetvet",
+  "version": "1.0.0",
+  "description": "pet vet nodeJS app",
+  "main": "app.js",
+  "scripts": {
+    "start": "./node_modules/.bin/nodemon app.js",
+    "test": "./node_modules/.bin/eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/niksmanov"
+  },
+  "author": "NinjaCode",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "pug": "^2.0.0-rc.2",
+    "typings": "^2.1.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "eslint": "^4.0.0",
+    "eslint-config-google": "^0.8.0",
+    "nodemon": "^1.11.0"
+  }
+}
