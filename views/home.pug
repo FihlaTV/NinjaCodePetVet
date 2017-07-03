@@ -1,0 +1,14 @@
+extends _master
+
+block scripts
+    script(src="/static/js/home.js")
+block head
+   title Home Page
+block body
+    h1 Home page with Pug template
+    form(action="/", method="POST")
+        label
+            | Name:
+            input(type="text", name="name")
+        button
+            | Create
