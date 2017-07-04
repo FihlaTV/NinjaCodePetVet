@@ -1,0 +1,20 @@
+extends _master
+
+block head
+    title Create Animal Page
+block body
+    h1 Create Animal page with Pug template
+    form(action="/", method="POST")
+        | Pet Name
+        input(type='text', name='name')
+        br
+        | Pet Type
+        input(type='text', name='type')
+        br
+        | Pet Age
+        input(type='text', name='age')
+        br
+        | Pet Last Check up
+        input(type='text', name='checkUp')
+        br
+        input(type='submit', value='Submit')

@@ -1,4 +1,4 @@
- /* globals require */
+/* globals require */
 const express = require('express');
 // const bodyParser = require('body-parser');
 

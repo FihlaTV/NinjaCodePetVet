@@ -6,6 +6,7 @@
   "scripts": {
     "start": "",
     "dev": "./node_modules/.bin/gulp dev",
+    "release": "./node_modules/.bin/gulp server",
     "test": "./node_modules/.bin/eslint ."
   },
   "repository": {

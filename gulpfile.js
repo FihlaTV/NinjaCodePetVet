@@ -9,8 +9,8 @@ gulp.task('server', () => {
     const app = require('./app');
 
     const date = new Date();
-    const result = `App works on port ${port} at 
-    ${date.getHours()}:${date.getMinutes()}h!`;
+    const currentTime = `${date.getHours()}:${date.getMinutes()}h`;
+    const result = `App works on port ${port} at ${currentTime}!`;
 
     app.listen(port, () => console.log(result));
 });

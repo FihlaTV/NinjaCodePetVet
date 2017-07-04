@@ -7,8 +7,8 @@ const attach = (app) => {
         res.render('home', {
             // here we get html elements
         });
-    }).get('/test', (req, res) => {
-        res.render('test', {
+    }).get('/createanimal', (req, res) => {
+        res.render('createAnimal', {
             // here we get html elements
         });
     }).get('/notFound', (req, res) => {
