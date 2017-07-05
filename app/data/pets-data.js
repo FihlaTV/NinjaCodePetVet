@@ -1,18 +1,23 @@
 const { MongoClient } = require('mongodb');
 
 const connectionString = 'mongodb://localhost/PetVetDb';
-const dbConnection = MongoClient.connect(connectionString);
+const connectionPromise = MongoClient.connect(connectionString);
 
-dbConnection
-    .then((connection) => {
-        connection.collection('Pets').insertOne({
-            name: 'Lucky',
-            type: 'dog',
-            breed: 'Husky',
-            age: '3',
-            checkUp: '23.06.2017',
-        });
+connectionPromise.then((db) => {
+    return db;
+}).then((db) => {
+    db.collection('Pets').insertOne({
+        owner: 'Ivan',
+        name: 'Lucky',
+        address: 'Mladost 3, block 323',
+        type: 'dog',
+        breed: 'Husky',
+        age: '3',
+        checkUp: '23.06.2017',
     })
-    .catch((error) => {
-        console.log(error);
-    });
+        .catch((error) => {
+            console.log(error);
+        });
+});
+
+module.exports = connectionPromise;

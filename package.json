@@ -2,7 +2,7 @@
   "name": "ninjacodepetvet",
   "version": "1.0.0",
   "description": "pet vet nodeJS app",
-  "main": "index.js",
+  "main": "",
   "scripts": {
     "start": "",
     "dev": "./node_modules/.bin/gulp dev",
@@ -24,6 +24,7 @@
     "express-session": "^1.15.3",
     "gulp": "^3.9.1",
     "gulp-nodemon": "^2.2.1",
+    "jquery": "^3.2.1",
     "mongodb": "^2.2.29",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",

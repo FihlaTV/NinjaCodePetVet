@@ -7,21 +7,16 @@ const port = process.env.PORT || 3001;
 
 gulp.task('server', () => {
     const app = require('./app');
-
-    const date = new Date();
-    const currentTime = `${date.getHours()}:${date.getMinutes()}h`;
-    const result = `App works on port ${port} at ${currentTime}!`;
-
-    app.listen(port, () => console.log(result));
+    app.listen(port, () => console.log(`App works on port ${port}!`));
 });
 
 gulp.task('dev', ['server'], () => {
     return nodemon({
         ext: 'js',
-        tasks: ['server'],
+        script: './app',
     });
 });
 
 // gulp.task('test-server:start', () => {
-//     const connectionString = 'mongodb://nameOfTheBase';
+//     const connectionString = 'mongodb://localhost/PetVetDb';
 // });

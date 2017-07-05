@@ -9,7 +9,7 @@ const configApp = (app) => {
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
 
-    app.use('/libs', express.static('../node_modules'));
+    app.use('/libs', express.static('./node_modules'));
     app.use('/static', express.static('./static'));
 };
 

@@ -3,7 +3,7 @@ const app = express();
 const data = require('./data');
 
 require('./config/app.config')(app);
-require('./config/auth.config')(app);
+// require('./config/auth.config')(app);
 
 require('./routes')(app);
 
