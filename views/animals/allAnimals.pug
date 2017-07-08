@@ -1,0 +1,31 @@
+extends ../_master
+
+block scripts
+block head
+    title All Animals Page
+block body
+    h1 All Animals page with Pug template
+    ol
+        each animal in context
+            li
+                strong Pet Name:
+                =animal.name
+                br
+                strong Pet Owner:
+                =animal.owner
+                br
+                strong Owner Address:
+                =animal.ownerAddress
+                br
+                strong Pet Type:
+                =animal.type
+                br
+                strong Pet Breed:
+                =animal.breed
+                br
+                strong Pet Age:
+                =animal.age
+                br
+                strong Pet Chek Up:
+                =animal.checkUp
+            br

@@ -1,15 +1,32 @@
 const express = require('express');
-const app = express();
-const data = require('./data');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
 
-require('./config/app.config')(app);
-// require('./config/auth.config')(app);
+const init = (data) => {
+    const app = express();
 
-require('./routes')(app);
+    app.set('view engine', 'pug');
+    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: true }));
 
-// if no controller is found for this page redirect it
-app.get('*', (req, res) => {
-    res.redirect('/notFound');
-});
+    app.use('/libs', express.static('./node_modules'));
+    app.use('/static', express.static('./static'));
+    app.use(cookieParser('keyboard cat'));
+    app.use(session({ cookie: { maxAge: 60000 } }));
 
-module.exports = app;
+    app.use(require('connect-flash')());
+    app.use((req, res, next) => {
+        res.locals.messages = require('express-messages')(req, res);
+        next();
+    });
+
+    require('./routers')
+        .attachTo(app, data);
+
+    return Promise.resolve(app);
+};
+
+module.exports = {
+    init,
+};

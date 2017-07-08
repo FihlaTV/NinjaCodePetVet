@@ -1,0 +1,33 @@
+extends ../_master
+
+block scripts
+block head
+    title Create Animal Page
+block body
+    h1 Create Animal page with Pug template
+    != messages()
+
+    form(action="/animals", method="POST")
+        | Pet Name
+        input.form-control(name="name" required type="text" placeholder="Enter Pet Name")
+        br
+        | Pet Owner
+        input.form-control(name="owner" required type="text" placeholder="Enter Pet Owner")
+        br
+        | Owner Address
+        input.form-control(name="ownerAddress" required type="text" placeholder="Enter Owner Address")
+        br
+        | Pet Type
+        input.form-control(name="type" required type="text" placeholder="Enter Pet Type")
+        br
+        | Pet Breed
+        input.form-control(name="breed" required type="text" placeholder="Enter Pet Breed")
+        br
+        | Pet Age
+        input.form-control(name="age" required type="text" placeholder="Enter Pet Age")
+        br
+        | Pet Check Up
+        input.form-control(name="checkUp" required type="text" placeholder="Enter Pet Last Check Up")
+        br
+        button.btn.btn-success
+            | Create

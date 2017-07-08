@@ -1,4 +1,5 @@
-/* globals User */
+/*
+/!* globals User *!/
 
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
@@ -6,12 +7,11 @@ const session = require('express-session');
 const { Strategy } = require('passport-local');
 const { MongoClient } = require('mongodb');
 const MongoStore = require('connect-mongo')(session);
+const config = require('./app.config');
 
-const connectionString = 'mongodb://localhost/PetVetDb';
-const connectionPromise = MongoClient.connect(connectionString);
 
 const configAuth = (app) => {
-   connectionPromise.then((db) => {
+   config.configApp(app).then((db) => {
             passport.use(new Strategy(
                 (username, password, done) => {
                     User.findOne({ username: username }, (err, user) => {
@@ -49,3 +49,4 @@ const configAuth = (app) => {
 };
 
 module.exports = configAuth;
+*/
