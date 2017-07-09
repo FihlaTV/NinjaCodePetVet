@@ -8,10 +8,16 @@ head
     meta(http-equiv="X-UA-Compatible" content="ie=edge")
     link(rel="stylesheet", href="/libs/bootstrap/dist/css/bootstrap.min.css")
     link(rel="stylesheet", href="/static/css/main.css")
+    link(rel="stylesheet", href="/static/css/bootstrap-theme-superhero.min.css")
     block head
     script(src="/libs/jquery/dist/jquery.js")
+    script(src="/libs/bootstrap/dist/js/bootstrap.min.js")
     block scripts
 body
     +nav()
 
-    block body
+    div.container
+        block body
+    
+    script(src="/static/js/main.js")
+    block body_scripts
