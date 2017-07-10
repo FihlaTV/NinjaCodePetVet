@@ -1,3 +1,7 @@
+window.onload=function () {
+    $('#nav-btn-all-animals').addClass('active');    
+};
+
 let $edit = $('.edit');
 
 $edit.on('click', (event) => {
