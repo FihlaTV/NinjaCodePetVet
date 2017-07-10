@@ -5,28 +5,58 @@ block head
     title All Animals Page
 block body
     h1 All Animals
-    ol
-        each animal in context
-            li
-                strong Pet Name:
-                =animal.name
+
+    form(action="/animals", method="POST")
+        ol.petsList
+            each pet in context
+                li
+                    p(style='display:none;')
+                        inline.id
+                            =pet.id
+                    p
+                        strong Pet Name:
+                        inline
+                            =pet.name
+                        input(name="name" style='display:none;')
+                    p
+                        strong Pet Type:
+                        inline
+                            =pet.type
+                        input(name="type" style='display:none;')
+                    p
+                        strong Pet Breed:
+                        inline
+                            =pet.breed
+                        input(name="breed" style='display:none;')
+                    p
+                        strong Pet Birth Date:
+                        inline
+                            =pet.birthDate
+                        input(name="birthDate" style='display:none;')
+                    p
+                        strong Pet Owner:
+                        inline
+                            =pet.owner
+                        input(name="petOwner" style='display:none;')
+                    p
+                        strong Owner Address:
+                        inline
+                            =pet.ownerAddress
+                        input(name="ownerAddress" style='display:none;')
+                        img.edit(src='/static/img/icons/edit.png', style='width:15px')
+                    p
+                        strong Owner Phone:
+                        inline
+                            =pet.ownerPhone
+                        input(name="ownerPhone" style='display:none;')
+                        img.edit(src='/static/img/icons/edit.png', style='width:15px')
+                    p
+                        strong Pet Check Up:
+                        inline
+                            =pet.checkUp
+                        input(name="checkUp" style='display:none;')
+                        img.edit(src='/static/img/icons/edit.png', style='width:15px')
+                    button.btn.btn-success(style='display:none;')
+                        | Update
                 br
-                strong Pet Owner:
-                =animal.owner
-                br
-                strong Owner Address:
-                =animal.ownerAddress
-                br
-                strong Pet Type:
-                =animal.type
-                br
-                strong Pet Breed:
-                =animal.breed
-                br
-                strong Pet Age:
-                =animal.age
-                br
-                strong Pet Chek Up:
-                =animal.checkUp
-            br
     script(src="/static/js/allAnimals.js")

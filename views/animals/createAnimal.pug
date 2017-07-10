@@ -8,27 +8,30 @@ block body
     != messages()
 
     form(action="/animals", method="POST")
-        | Pet Name
-        input.form-control(name="name" required type="text" placeholder="Enter Pet Name")
-        br
-        | Pet Owner
-        input.form-control(name="owner" required type="text" placeholder="Enter Pet Owner")
-        br
-        | Owner Address
-        input.form-control(name="ownerAddress" required type="text" placeholder="Enter Owner Address")
-        br
-        | Pet Type
-        input.form-control(name="type" required type="text" placeholder="Enter Pet Type")
-        br
-        | Pet Breed
-        input.form-control(name="breed" required type="text" placeholder="Enter Pet Breed")
-        br
-        | Pet Age
-        input.form-control(name="age" required type="text" placeholder="Enter Pet Age")
-        br
-        | Pet Check Up
-        input.form-control(name="checkUp" required type="text" placeholder="Enter Pet Last Check Up")
-        br
+        p
+            | Pet Name
+            input.form-control(name="name" required type="text" placeholder="Enter Pet Name")
+        p
+            | Pet Type
+            input.form-control(name="type" required type="text" placeholder="Enter Pet Type")
+        p
+            | Pet Breed
+            input.form-control(name="breed" required type="text" placeholder="Enter Pet Breed")
+        p
+            | Pet Birth Date
+            input.form-control(name="birthDate" required type="text" placeholder="Enter Pet Birth Date")
+        p
+            | Pet Owner
+            input.form-control(name="owner" required type="text" placeholder="Enter Pet Owner")
+        p
+            | Owner Address
+            input.form-control(name="ownerAddress" required type="text" placeholder="Enter Owner Address")
+        p
+            | Owner Phone
+            input.form-control(name="ownerPhone" required type="text" placeholder="Enter Owner Phone")
+        p
+            | Check Up
+            input.form-control(name="checkUp" required type="text" placeholder="Enter Pet Check Up")
         button.btn.btn-success
             | Create
     

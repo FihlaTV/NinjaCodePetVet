@@ -5,3 +5,7 @@ h1 {
 .navbar-header a {
     padding-top: 0.8rem;
 }
+
+.edit {
+    cursor: pointer;
+}
