@@ -5,13 +5,12 @@ block head
     title All Animals Page
 block body
     h1 All Animals
-    ol.petsList
+    ol
         each pet in context
             li
                 p(style='display:none;')
-                    inline.id
+                    inline
                         =pet.id
-                    input(name="_id" style='display:none;')
                 p
                     strong Pet Name:
                     inline
@@ -36,21 +35,21 @@ block body
                     strong Owner Address:
                     inline
                         = ' ' + pet.ownerAddress + ' '
-                    input.ownerAddress(name="ownerAddress" style='display:none;')
+                    input(name="ownerAddress" style='display:none;')
                     img.edit(src='/static/img/icons/edit.png', style='width:15px')
                     img.ok(src='/static/img/icons/ok.png', style='display:none; width:17px')
                 p
                     strong Owner Phone:
                     inline
                         = ' ' + pet.ownerPhone + ' '
-                    input.ownerPhone(name="ownerPhone" style='display:none;')
+                    input(name="ownerPhone" style='display:none;')
                     img.edit(src='/static/img/icons/edit.png', style='width:15px')
                     img.ok(src='/static/img/icons/ok.png', style='display:none; width:17px')
                 p
                     strong Pet Check Up:
                     inline
                         = ' ' + pet.checkUp + ' '
-                    input.checkUp(name="checkUp" style='display:none;')
+                    input(name="checkUp" style='display:none;')
                     img.edit(src='/static/img/icons/edit.png', style='width:15px')
                     img.ok(src='/static/img/icons/ok.png', style='display:none; width:17px')
                 button.btn.btn-default(style='display:none;')
