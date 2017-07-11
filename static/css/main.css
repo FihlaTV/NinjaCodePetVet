@@ -17,3 +17,8 @@ li > .btn-success {
     display: inline-block;
     padding: 3px 15px;
 }
+
+li > p > inline {
+    margin-left: 5px;
+    margin-right: 5px;
+}

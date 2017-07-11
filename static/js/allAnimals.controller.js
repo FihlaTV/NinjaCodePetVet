@@ -5,7 +5,6 @@ window.onload = function() {
 let $edit = $('.edit');
 
 $edit.on('click', (event) => {
-    event.preventDefault();
     let $editButton = $(event.target);
     let li = event.target.parentElement.parentElement;
 
@@ -15,7 +14,7 @@ $edit.on('click', (event) => {
 
     let formText = event.target.parentElement.innerText;
     formText = formText.split(':');
-    formText = formText[1].slice(1).slice(0, -1);
+    formText = formText[1];
 
     let input = $editButton.prev();
     let inlineText = input.prev();
@@ -36,8 +35,10 @@ $edit.on('click', (event) => {
     updateBtn.style.display = "block";
 
     $(updateBtn).on('click', (event) => {
+        event.preventDefault();
         let currentBtn = $(event.target).hide();
         cancelButton.hide();
+        $okButton.hide();
         input.hide();
         inlineText.show();
         $editButton.show();

@@ -9,7 +9,6 @@
     "release": "./node_modules/.bin/gulp server",
     "test": "./node_modules/.bin/eslint .",
     "fix": "./node_modules/.bin/eslint --fix ."
-
   },
   "repository": {
     "type": "git",

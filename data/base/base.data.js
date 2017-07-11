@@ -1,3 +1,5 @@
+const objectId = require('mongodb').ObjectID;
+
 class BaseData {
     constructor(db, ModelClass, validator) {
         // TODO: create validator!
@@ -30,7 +32,7 @@ class BaseData {
         //     return Promise.reject('Invalid model!');
         // }
         this.collection.findOneAndUpdate(
-            { _id: model._id },
+            { _id: objectId(model._id) },
             {
                 $set: {
                     ownerAddress: model.ownerAddress,
@@ -38,8 +40,6 @@ class BaseData {
                     checkUp: model.checkUp,
                 },
             },
-            // { upsert: true } --> generates new object
-            // if can't find it in the base
             { upsert: true }).catch((err) => {
             return err;
         });

@@ -14,41 +14,41 @@ block body
                 p
                     strong Pet Name:
                     inline
-                        = ' ' + pet.name
+                        =pet.name
                 p
                     strong Pet Type:
                     inline
-                        = ' ' + pet.type
+                        =pet.type
                 p
                     strong Pet Breed:
                     inline
-                        = ' ' + pet.breed
+                        =pet.breed
                 p
                     strong Pet Birth Date:
                     inline
-                        = ' ' + pet.birthDate
+                        =pet.birthDate
                 p
                     strong Pet Owner:
                     inline
-                        = ' ' + pet.owner
+                        =pet.owner
                 p
                     strong Owner Address:
                     inline
-                        = ' ' + pet.ownerAddress + ' '
+                        =pet.ownerAddress
                     input(name="ownerAddress" style='display:none;')
                     img.edit(src='/static/img/icons/edit.png', style='width:15px')
                     img.ok(src='/static/img/icons/ok.png', style='display:none; width:17px')
                 p
                     strong Owner Phone:
                     inline
-                        = ' ' + pet.ownerPhone + ' '
+                        =pet.ownerPhone
                     input(name="ownerPhone" style='display:none;')
                     img.edit(src='/static/img/icons/edit.png', style='width:15px')
                     img.ok(src='/static/img/icons/ok.png', style='display:none; width:17px')
                 p
                     strong Pet Check Up:
                     inline
-                        = ' ' + pet.checkUp + ' '
+                        =pet.checkUp
                     input(name="checkUp" style='display:none;')
                     img.edit(src='/static/img/icons/edit.png', style='width:15px')
                     img.ok(src='/static/img/icons/ok.png', style='display:none; width:17px')
