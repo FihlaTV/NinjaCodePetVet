@@ -25,6 +25,31 @@ class BaseData {
         return result;
     }
 
+    update(model) {
+        // if (!this._isModelValid(model)) {
+        //     return Promise.reject('Invalid model!');
+        // }
+        this.collection.findOneAndUpdate(
+            { _id: model._id },
+            {
+                $set: {
+                    ownerAddress: model.ownerAddress,
+                    ownerPhone: model.ownerPhone,
+                    checkUp: model.checkUp,
+                },
+            },
+            // { upsert: true } --> generates new object
+            // if can't find it in the base
+            { upsert: true }).catch((err) => {
+            return err;
+        });
+    }
+
+    //
+    // _isModelValid(model) {
+    //     return this.validator.isValid(model);
+    // }
+
     create(model) {
         // if (!this._isModelValid(model)) {
         //     return Promise.reject('Invalid model!');
