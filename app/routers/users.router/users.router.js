@@ -15,9 +15,12 @@ const attachTo = (app, data) => {
         return controller.getUser(req, res);
     });
 
-    app.post('/login', passport.authenticate('local', { failureRedirect: '/login' }),
+    app.post('/login', passport.authenticate('local', {
+        failureRedirect: '/login',
+    }),
         (req, res) => {
-            res.redirect('/profile');
+            return controller.getUser(req, res);
+            //res.redirect('/profile');
     });
 
     app.get('/logout', (req, res) => {
@@ -28,7 +31,7 @@ const attachTo = (app, data) => {
     app.post('/register', (req, res, next) => {
         // validate registration data
         if (!req.body.username || req.body.username.length < 3) {
-            
+
         }
 
         if (!req.body.password || req.body.password.length < 6) { 
@@ -37,7 +40,6 @@ const attachTo = (app, data) => {
 
         const user = {
             username: req.body.username,
-            // encrypt password below
             password: req.body.password,
         };
         return data.users.create(user)
@@ -47,13 +49,12 @@ const attachTo = (app, data) => {
                         return next(er);
                     }
 
-                    return res.redirect('/');
+                    return controller.getUser(req, res);
+                    // return res.redirect('/profile');
                 });
             })
             .catch((err) => {
                 req.flash('error', err);
-                console.log('------------ ERROR ----------');
-                console.log(err);
                 return res.redirect('/register');
             });
     });

@@ -31,8 +31,8 @@ class BaseData {
         // }
 
         return this.collection.insertOne(model)
-            .then(() => {
-                return this.ModelClass.toViewModel(model);
+            .then((dbo) => {
+                return this.ModelClass.toViewModel(dbo.ops[0]);
             });
     }
 

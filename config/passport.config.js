@@ -22,8 +22,6 @@ const passportConfig = (app, data) => {
             passwordField: 'password',
         },
         (username, password, done) => {
-            console.log('============ IN LOCAL STRAGY ========');
-            console.log(data);
             data.users.findOne({ username: username }, (err, user) => {
                 if (err) {
                     return done(err);

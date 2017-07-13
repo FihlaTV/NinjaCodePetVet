@@ -34,7 +34,8 @@ class UsersData extends BaseData {
 
     findById(userId) {
         userId = parseInt(userId, 10);
-        const user = this.collection.find((u) => u.id === userId);
+        
+        const user = this.collection.find( { '_id': userId });
         return new Promise((resolve, reject) => {
             if (!user) {
                 return reject('No such user');
