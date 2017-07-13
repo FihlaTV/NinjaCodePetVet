@@ -12,7 +12,7 @@ const attachTo = (app, data) => {
     app.put('/animals', (req, res) => {
         const animal = req.body;
         // validate item
-        return data.animals.update(animal);
+        return data.animals.updateAnimal(animal);
     });
 
     app.post('/animals', (req, res) => {

@@ -1,5 +1,3 @@
-const objectId = require('mongodb').ObjectID;
-
 class BaseData {
     constructor(db, ModelClass, validator) {
         // TODO: create validator!
@@ -26,29 +24,6 @@ class BaseData {
         }
         return result;
     }
-
-    update(model) {
-        // if (!this._isModelValid(model)) {
-        //     return Promise.reject('Invalid model!');
-        // }
-        this.collection.findOneAndUpdate(
-            { _id: objectId(model._id) },
-            {
-                $set: {
-                    ownerAddress: model.ownerAddress,
-                    ownerPhone: model.ownerPhone,
-                    checkUp: model.checkUp,
-                },
-            },
-            { upsert: true }).catch((err) => {
-            return err;
-        });
-    }
-
-    //
-    // _isModelValid(model) {
-    //     return this.validator.isValid(model);
-    // }
 
     create(model) {
         // if (!this._isModelValid(model)) {
