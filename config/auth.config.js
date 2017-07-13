@@ -8,16 +8,16 @@ const mongoDb = require('mongodb').MongoClient;
 const config = require('./app.config');
 const passportConfig = require('./passport.config');
 
-const init = (app) => {
-    // const db = require('../db/db');
-    // require('../data/data').init(db)
-        .then((data) => {
+const init = (app, data) => {
+    // const db = require('../db').init(config.connectionString);
+    // require('../data').init(db)
+    //     .then((data) => {
             app.use(cookieParser());
             app.use(session({ secret: 'Pet Vet' }));
             app.use(passport.initialize());
             app.use(passport.session());
             passportConfig(app, data);
-        });
+        // });
         
         // return Promise.resolve(app);
 };

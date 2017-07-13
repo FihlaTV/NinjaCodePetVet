@@ -31,7 +31,7 @@ const init = (data) => {
     require('./routers')
         .attachTo(app, data);
 
-    return Promise.resolve(app);
+    return Promise.resolve(app, data);
 };
 
 module.exports = {
