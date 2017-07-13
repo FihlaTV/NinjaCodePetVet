@@ -5,58 +5,56 @@ block head
     title All Animals Page
 block body
     h1 All Animals
-
-    form(action="/animals", method="POST")
-        ol.petsList
-            each pet in context
-                li
-                    p(style='display:none;')
-                        inline.id
-                            =pet.id
-                    p
-                        strong Pet Name:
-                        inline
-                            =pet.name
-                        input(name="name" style='display:none;')
-                    p
-                        strong Pet Type:
-                        inline
-                            =pet.type
-                        input(name="type" style='display:none;')
-                    p
-                        strong Pet Breed:
-                        inline
-                            =pet.breed
-                        input(name="breed" style='display:none;')
-                    p
-                        strong Pet Birth Date:
-                        inline
-                            =pet.birthDate
-                        input(name="birthDate" style='display:none;')
-                    p
-                        strong Pet Owner:
-                        inline
-                            =pet.owner
-                        input(name="petOwner" style='display:none;')
-                    p
-                        strong Owner Address:
-                        inline
-                            =pet.ownerAddress
-                        input(name="ownerAddress" style='display:none;')
-                        img.edit(src='/static/img/icons/edit.png', style='width:15px')
-                    p
-                        strong Owner Phone:
-                        inline
-                            =pet.ownerPhone
-                        input(name="ownerPhone" style='display:none;')
-                        img.edit(src='/static/img/icons/edit.png', style='width:15px')
-                    p
-                        strong Pet Check Up:
-                        inline
-                            =pet.checkUp
-                        input(name="checkUp" style='display:none;')
-                        img.edit(src='/static/img/icons/edit.png', style='width:15px')
-                    button.btn.btn-success(style='display:none;')
-                        | Update
-                br
+    ol
+        each pet in context
+            li
+                p(style='display:none;')
+                    inline
+                        =pet.id
+                p
+                    strong Pet Name:
+                    inline
+                        =pet.name
+                p
+                    strong Pet Type:
+                    inline
+                        =pet.type
+                p
+                    strong Pet Breed:
+                    inline
+                        =pet.breed
+                p
+                    strong Pet Birth Date:
+                    inline
+                        =pet.birthDate
+                p
+                    strong Pet Owner:
+                    inline
+                        =pet.owner
+                p
+                    strong Owner Address:
+                    inline
+                        =pet.ownerAddress
+                    input(name="ownerAddress" style='display:none;')
+                    img.edit(src='/static/img/icons/edit.png', style='width:15px')
+                    img.ok(src='/static/img/icons/ok.png', style='display:none; width:17px')
+                p
+                    strong Owner Phone:
+                    inline
+                        =pet.ownerPhone
+                    input(name="ownerPhone" style='display:none;')
+                    img.edit(src='/static/img/icons/edit.png', style='width:15px')
+                    img.ok(src='/static/img/icons/ok.png', style='display:none; width:17px')
+                p
+                    strong Pet Check Up:
+                    inline
+                        =pet.checkUp
+                    input(name="checkUp" style='display:none;')
+                    img.edit(src='/static/img/icons/edit.png', style='width:15px')
+                    img.ok(src='/static/img/icons/ok.png', style='display:none; width:17px')
+                button.btn.btn-default(style='display:none;')
+                    | Cancel
+                button.btn.btn-success(style='display:none;')
+                    | Update
+            br
     script(src="/static/js/allAnimals.controller.js")
