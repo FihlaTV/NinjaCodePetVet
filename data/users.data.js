@@ -3,7 +3,7 @@ const User = require('../models/user.model');
 
 class UsersData extends BaseData {
     constructor(db) {
-        super(db, User);
+        super(db, User, User);
     }
 
     checkPassword(username, password) {
@@ -19,6 +19,28 @@ class UsersData extends BaseData {
                 }
                 return true;
             });
+    }
+
+    findByUsername(username) {
+        const usernnameToLower = username.toLowerCase();
+        const user = this.collection.find((u) => u.username.toLowerCase() === usernnameToLower);
+        return new Promise((resolve, reject) => {
+            if (!user) {
+                return reject('No such user');
+            }
+            return resolve(user);
+        });
+    }
+
+    findById(userId) {
+        userId = parseInt(userId, 10);
+        const user = this.collection.find((u) => u.id === userId);
+        return new Promise((resolve, reject) => {
+            if (!user) {
+                return reject('No such user');
+            }
+            return resolve(user);
+        });
     }
 }
 

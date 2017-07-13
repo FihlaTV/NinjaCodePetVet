@@ -20,6 +20,13 @@ const init = (data) => {
         res.locals.messages = require('express-messages')(req, res);
         next();
     });
+    require('../config/auth.config').init(app);
+    // delete below middleware
+    app.use((req, res, next) => {
+        console.log('-- Current user --');
+        console.log(req.user);
+        next();
+    });
 
     require('./routers')
         .attachTo(app, data);

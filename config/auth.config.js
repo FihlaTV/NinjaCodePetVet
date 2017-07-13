@@ -1,52 +1,25 @@
-/*
-/!* globals User *!/
+/* globals User */
 
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-const { Strategy } = require('passport-local');
-const { MongoClient } = require('mongodb');
-const MongoStore = require('connect-mongo')(session);
+const mongoDb = require('mongodb').MongoClient;
+// const MongoStore = require('connect-mongo')(session);
 const config = require('./app.config');
+const passportConfig = require('./passport.config');
 
-
-const configAuth = (app) => {
-   config.configApp(app).then((db) => {
-            passport.use(new Strategy(
-                (username, password, done) => {
-                    User.findOne({ username: username }, (err, user) => {
-                        if (err) {
-                            return done(err);
-                        }
-                        if (!user) {
-                            return done(null, false,
-                                { message: 'Incorrect username!' });
-                        }
-                        if (!user.validPassword(password)) {
-                            return done(null, false,
-                                { message: 'Incorrect password!' });
-                        }
-                        return done(null, user);
-                    });
-                }
-            ));
-
+const init = (app) => {
+    // const db = require('../db/db');
+    // require('../data/data').init(db)
+        .then((data) => {
             app.use(cookieParser());
             app.use(session({ secret: 'Pet Vet' }));
             app.use(passport.initialize());
             app.use(passport.session());
-
-            passport.serializeUser((user, done) => {
-                done(null, user.id);
-            });
-
-            passport.deserializeUser((id, done) => {
-                User.findById(id, function(err, user) {
-                    done(err, user);
-                });
-            });
+            passportConfig(app, data);
         });
+        
+        // return Promise.resolve(app);
 };
 
-module.exports = configAuth;
-*/
+module.exports = { init };

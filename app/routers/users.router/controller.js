@@ -1,7 +1,8 @@
 const init = (data) => {
     const controller = {
         getUser(req, res) {
-            return data.users.getUser()
+            const userId = req.body.userId;
+            return data.users.findById(userId)
                 .then((user) => {
                     return res.render('users/profile', {
                         context: user,
