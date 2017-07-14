@@ -8,10 +8,13 @@ const attachTo = (app, data) => {
         return res.render('home');
     });
 
-    app.get('/about', (req, res) => {
-        return res.render('about');
+    app.get('/aboutUs', (req, res) => {
+        return res.render('aboutUs');
     });
 
+    app.get('/contactUs', (req, res) => {
+        return res.render('contactUs');
+    });
 
     fs.readdirSync(__dirname)
         .filter((file) => file.includes('.router'))
