@@ -2,37 +2,47 @@ extends ../_master
 
 block scripts
 block head
-    title Create Animal Page
+    title Add a Pet
 block body
-    h1 Create Animal
+    h1 Add a pet
     != messages()
+    div.jumbotron.col-lg-10
+        form.form-horizontal(action="/animals", method="POST")
+            fieldset
+                section.form-group
+                    label.col-lg-2.control-label(for='inputPetName') Pet Name
+                    div.col-lg-10
+                        input#inputPetName.form-control(placeholder='Pet name', name='name', autocomplete='off', type='text', required)
+                section.form-group
+                    label.col-lg-2.control-label(for='inputPetKind') Pet Kind
+                    div.col-lg-10
+                        input#inputPetKind.form-control(placeholder='Pet kind', name='type', autocomplete='off', type='text', required)
+                section.form-group
+                    label.col-lg-2.control-label(for='inputPetBreed') Pet Breed
+                    div.col-lg-10
+                        input#inputPetBreed.form-control(placeholder='Pet breed', name='breed', autocomplete='off', type='text', required)
+                section.form-group
+                    label.col-lg-2.control-label(for='inputPetBirthDate') Pet Birth Date
+                    div.col-lg-10
+                        input#inputPetBirthDate.form-control(placeholder='Pet birth date', name='birthDate', autocomplete='off', type='text', required)
+                section.form-group
+                    label.col-lg-2.control-label(for='inputPetOwner') Pet Owner
+                    div.col-lg-10
+                        input#inputPetOwner.form-control(placeholder='Pet owner', name='owner', autocomplete='off', type='text', required)
+                section.form-group
+                    label.col-lg-2.control-label(for='inputOwnerAddress') Owner Address
+                    div.col-lg-10
+                        input#inputOwnerAddress.form-control(placeholder='Owner address', name='ownerAddress', autocomplete='off', type='address', required)
+                section.form-group
+                    label.col-lg-2.control-label(for='inputOwnerPhone') Owner phone
+                    div.col-lg-10
+                        input#inputOwnerPhone.form-control(placeholder='Owner phone', name='ownerPhone', autocomplete='off', type='tel', required)
+                section.form-group
+                    label.col-lg-2.control-label(for='inputPetCheckUp') Pet Check-up
+                    div.col-lg-10
+                        input#inputPetCheckUp.form-control(placeholder='Pet check-up', name='checkUp', autocomplete='off', type='text', required)
+                section.form-group
+                    div.col-lg-10.col-lg-offset-2
+                        button.btn.btn-primary(type='submit') Create
 
-    form(action="/animals", method="POST")
-        p
-            | Pet Name
-            input.form-control(name="name" required type="text" placeholder="Enter Pet Name")
-        p
-            | Pet Type
-            input.form-control(name="type" required type="text" placeholder="Enter Pet Type")
-        p
-            | Pet Breed
-            input.form-control(name="breed" required type="text" placeholder="Enter Pet Breed")
-        p
-            | Pet Birth Date
-            input.form-control(name="birthDate" required type="text" placeholder="Enter Pet Birth Date")
-        p
-            | Pet Owner
-            input.form-control(name="owner" required type="text" placeholder="Enter Pet Owner")
-        p
-            | Owner Address
-            input.form-control(name="ownerAddress" required type="text" placeholder="Enter Owner Address")
-        p
-            | Owner Phone
-            input.form-control(name="ownerPhone" required type="text" placeholder="Enter Owner Phone")
-        p
-            | Check Up
-            input.form-control(name="checkUp" required type="text" placeholder="Enter Pet Check Up")
-        button.btn.btn-success
-            | Create
-    
     script(src="/static/js/createAnimal.js")
