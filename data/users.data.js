@@ -22,12 +22,14 @@ class UsersData extends BaseData {
     }
 
     findByUsername(username) {
-        const usernnameToLower = username.toLowerCase();
-        const user = this.collection.find((u) => u.username.toLowerCase() === usernnameToLower);
+        const usernameToLower = username.toLowerCase();
+        const user = this.collection.find({ 'username': usernameToLower });
         return new Promise((resolve, reject) => {
             if (!user) {
                 return reject('No such user');
             }
+            console.log('=========== USER IN FIND BY USERNAME ======');
+            console.log(user);
             return resolve(user);
         });
     }

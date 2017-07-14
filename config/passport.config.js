@@ -2,6 +2,8 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
 const passportConfig = (app, data) => {
+    console.log('=========== DATA IN PASSPORT CONFIG ======');
+    console.log(data.users.findByUsername('vasilv'));
     app.use(passport.initialize());
     app.use(passport.session());
 
@@ -22,19 +24,20 @@ const passportConfig = (app, data) => {
             passwordField: 'password',
         },
         (username, password, done) => {
-            data.users.findOne({ username: username }, (err, user) => {
-                if (err) {
-                    return done(err);
-                }
-                if (!user) {
-                    return done(null, false,
-                        { message: 'Incorrect username!' });
-                }
-                if (!user.checkPassword(password)) {
-                    return done(null, false,
-                        { message: 'Incorrect password!' });
-                }
-                return done(null, user);
+            data.users.findByUsername(username)
+                .then( (err, user) => {
+                    if (err) {
+                        return done(err);
+                    }
+                    if (!user) {
+                        return done(null, false,
+                            { message: 'Incorrect username!' });
+                    }
+                    if (!user.checkPassword(password)) {
+                        return done(null, false,
+                            { message: 'Incorrect password!' });
+                    }
+                    return done(null, user);
             });
         }
     ));
