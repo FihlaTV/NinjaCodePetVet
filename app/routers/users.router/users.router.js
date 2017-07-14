@@ -11,8 +11,14 @@ const attachTo = (app, data) => {
         return res.render('users/register');
     });
 
-    app.get('/profile', (req, res) => {
-        return controller.getUser(req, res);
+    app.get('/profile', (req, res, next) => {
+        // Uncomment below to work without user
+        // if (!req.user) {
+        //     return res.redirect('/');
+        // }
+        return next();
+    }, (req, res) => {
+            return controller.getUser(req, res);
     });
 
     app.post('/login', passport.authenticate('local', {
