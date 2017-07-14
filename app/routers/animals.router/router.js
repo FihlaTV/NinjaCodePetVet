@@ -4,7 +4,7 @@ const attachTo = (app, data) => {
     app.get('/allAnimals', (req, res, next) => {
         // Uncomment below to work without user
         // if (!req.user) {
-        //     return res.redirect('/');
+        //     return res.redirect('/login');
         // }
         return next();
     }, (req, res) => {
@@ -18,7 +18,7 @@ const attachTo = (app, data) => {
     app.put('/animals', (req, res, next) => {
         // Uncomment below to work without user
         // if (!req.user) {
-        //     return res.redirect('/');
+        //     return res.redirect('/login');
         // }
         return next();
     }, (req, res) => {
@@ -30,7 +30,7 @@ const attachTo = (app, data) => {
     app.post('/animals', (req, res, next) => {
         // Uncomment below to work without user
         // if (!req.user) {
-        //     return res.redirect('/');
+        //     return res.redirect('/login');
         // }
         return next();
     }, (req, res) => {

@@ -13,9 +13,9 @@ const attachTo = (app, data) => {
 
     app.get('/profile', (req, res, next) => {
         // Uncomment below to work without user
-        // if (!req.user) {
-        //     return res.redirect('/');
-        // }
+        if (!req.user) {
+            return res.redirect('/login');
+        }
         return next();
     }, (req, res) => {
             return controller.getUser(req, res);
@@ -25,8 +25,9 @@ const attachTo = (app, data) => {
         failureRedirect: '/login',
     }),
         (req, res) => {
-            return controller.getUser(req, res);
-            //res.redirect('/profile');
+            return res.send(req.body);
+            // return controller.getUser(req, res);
+            // res.redirect('/profile');
     });
 
     app.get('/logout', (req, res) => {
