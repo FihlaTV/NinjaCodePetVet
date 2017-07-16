@@ -11,6 +11,18 @@ const attachTo = (app, data) => {
         return res.render('users/register');
     });
 
+    app.put('/profile', (req, res, next) => {
+        // Uncomment below to work without user
+        // if (!req.user) {
+        //     return res.redirect('/login');
+        // }
+        return next();
+    }, (req, res) => {
+        const user = req.body;
+        // validate item
+        return data.users.updateUser(user);
+    });
+
     app.get('/profile', (req, res, next) => {
         // Uncomment below to work without user
         if (!req.user) {
@@ -41,14 +53,17 @@ const attachTo = (app, data) => {
 
         }
 
-        if (!req.body.password || req.body.password.length < 6) { 
+        if (!req.body.password || req.body.password.length < 6) {
 
         }
 
-        const user = {
-            username: req.body.username,
-            password: req.body.password,
-        };
+        // const user = {
+        //     username: req.body.username,
+        //     password: req.body.password,
+        //
+        // };
+
+        const user = req.body;
         return data.users.create(user)
             .then((dbUser) => {
                 return req.login(dbUser, (er) => {

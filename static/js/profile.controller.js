@@ -6,7 +6,7 @@ let $edit = $('.edit');
 
 $edit.on('click', (event) => {
     let $editButton = $(event.target);
-    let li = event.target.parentElement.parentElement;
+    let div = event.target.parentElement.parentElement;
 
     $editButton.hide();
     let $okButton = $editButton.next();
@@ -31,7 +31,7 @@ $edit.on('click', (event) => {
         inlineText.show();
     });
 
-    let updateBtn = li.lastElementChild;
+    let updateBtn = div.lastElementChild;
     updateBtn.style.display = "block";
 
     $(updateBtn).on('click', (event) => {
@@ -43,20 +43,20 @@ $edit.on('click', (event) => {
         inlineText.show();
         $editButton.show();
 
-        let currentId = $(li).children()[0].innerText;
-        let ownerAddress = $(li).children()[6].innerText.split(':')[1];
-        let ownerPhone = $(li).children()[7].innerText.split(':')[1];
-        let checkUp = $(li).children()[8].innerText.split(':')[1];
+        let currentId = $(div).children()[0].innerText;
+        let ownerAddress = $(div).children()[1].innerText.split(':')[1];
+        let ownerPhone = $(div).children()[2].innerText.split(':')[1];
+        let ownerPassword = $(div).children()[3].innerText.split(':')[1];
 
         $.ajax({
             method: "PUT",
-            url: "/animals",
+            url: "/profile",
             contentType: "application/json",
             data: JSON.stringify({
                 _id: currentId,
-                ownerAddress: ownerAddress,
-                ownerPhone: ownerPhone,
-                checkUp: checkUp,
+                address: ownerAddress,
+                phone: ownerPhone,
+                password: ownerPassword,
             })
         })
     });

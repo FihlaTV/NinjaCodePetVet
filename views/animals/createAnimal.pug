@@ -1,48 +1,48 @@
-extends ../_master
-
-block scripts
-block head
-    title Add a Pet
-block body
-    h1 Add a pet
-    != messages()
-    div.jumbotron.col-lg-10
-        form.form-horizontal(action="/animals", method="POST")
-            fieldset
-                section.form-group
-                    label.col-lg-2.control-label(for='inputPetName') Pet Name
-                    div.col-lg-10
-                        input#inputPetName.form-control(placeholder='Pet name', name='name', autocomplete='off', type='text', required)
-                section.form-group
-                    label.col-lg-2.control-label(for='inputPetKind') Pet Kind
-                    div.col-lg-10
-                        input#inputPetKind.form-control(placeholder='Pet kind', name='type', autocomplete='off', type='text', required)
-                section.form-group
-                    label.col-lg-2.control-label(for='inputPetBreed') Pet Breed
-                    div.col-lg-10
-                        input#inputPetBreed.form-control(placeholder='Pet breed', name='breed', autocomplete='off', type='text', required)
-                section.form-group
-                    label.col-lg-2.control-label(for='inputPetBirthDate') Pet Birth Date
-                    div.col-lg-10
-                        input#inputPetBirthDate.form-control(placeholder='Pet birth date', name='birthDate', autocomplete='off', type='text', required)
-                section.form-group
-                    label.col-lg-2.control-label(for='inputPetOwner') Pet Owner
-                    div.col-lg-10
-                        input#inputPetOwner.form-control(placeholder='Pet owner', name='owner', autocomplete='off', type='text', required)
-                section.form-group
-                    label.col-lg-2.control-label(for='inputOwnerAddress') Owner Address
-                    div.col-lg-10
-                        input#inputOwnerAddress.form-control(placeholder='Owner address', name='ownerAddress', autocomplete='off', type='address', required)
-                section.form-group
-                    label.col-lg-2.control-label(for='inputOwnerPhone') Owner phone
-                    div.col-lg-10
-                        input#inputOwnerPhone.form-control(placeholder='Owner phone', name='ownerPhone', autocomplete='off', type='tel', required)
-                section.form-group
-                    label.col-lg-2.control-label(for='inputPetCheckUp') Pet Check-up
-                    div.col-lg-10
-                        input#inputPetCheckUp.form-control(placeholder='Pet check-up', name='checkUp', autocomplete='off', type='text', required)
-                section.form-group
-                    div.col-lg-10.col-lg-offset-2
-                        button.btn.btn-primary(type='submit') Create
-
-    script(src="/static/js/createAnimal.js")
+//extends ../_master
+//
+//block scripts
+//block head
+//    title Add a Pet
+//block body
+//    h1 Add a pet
+//    != messages()
+//    div.jumbotron.col-lg-10
+//        form.form-horizontal(action="/animals", method="POST")
+//            fieldset
+//                section.form-group
+//                    label.col-lg-2.control-label(for='inputPetName') Pet Name
+//                    div.col-lg-10
+//                        input#inputPetName.form-control(placeholder='Pet name', name='name', autocomplete='off', type='text', required)
+//                section.form-group
+//                    label.col-lg-2.control-label(for='inputPetKind') Pet Kind
+//                    div.col-lg-10
+//                        input#inputPetKind.form-control(placeholder='Pet kind', name='type', autocomplete='off', type='text', required)
+//                section.form-group
+//                    label.col-lg-2.control-label(for='inputPetBreed') Pet Breed
+//                    div.col-lg-10
+//                        input#inputPetBreed.form-control(placeholder='Pet breed', name='breed', autocomplete='off', type='text', required)
+//                section.form-group
+//                    label.col-lg-2.control-label(for='inputPetBirthDate') Pet Birth Date
+//                    div.col-lg-10
+//                        input#inputPetBirthDate.form-control(placeholder='Pet birth date', name='birthDate', autocomplete='off', type='text', required)
+//                section.form-group
+//                    label.col-lg-2.control-label(for='inputPetOwner') Pet Owner
+//                    div.col-lg-10
+//                        input#inputPetOwner.form-control(placeholder='Pet owner Username', name='ownerUsername', autocomplete='off', type='text', required)
+//                section.form-group
+//                    label.col-lg-2.control-label(for='inputOwnerAddress') Owner Address
+//                    div.col-lg-10
+//                        input#inputOwnerAddress.form-control(placeholder='Owner address', name='ownerAddress', autocomplete='off', type='address', required)
+//                section.form-group
+//                    label.col-lg-2.control-label(for='inputOwnerPhone') Owner phone
+//                    div.col-lg-10
+//                        input#inputOwnerPhone.form-control(placeholder='Owner phone', name='ownerPhone', autocomplete='off', type='tel', required)
+//                section.form-group
+//                    label.col-lg-2.control-label(for='inputPetCheckUp') Pet Check-up
+//                    div.col-lg-10
+//                        input#inputPetCheckUp.form-control(placeholder='Pet check-up', name='checkUp', autocomplete='off', type='text', required)
+//                section.form-group
+//                    div.col-lg-10.col-lg-offset-2
+//                        button.btn.btn-primary(type='submit') Create
+//
+//    script(src="/static/js/createAnimal.js")

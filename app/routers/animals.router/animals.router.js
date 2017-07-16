@@ -39,7 +39,7 @@ const attachTo = (app, data) => {
         // validate item
         return data.animals.create(animal)
             .then((dbAnimal) => {
-                return res.redirect('/allAnimals');
+                return res.redirect('/profile');
             })
             .catch((err) => {
                 // connect-flash

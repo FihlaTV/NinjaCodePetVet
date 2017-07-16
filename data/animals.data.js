@@ -11,6 +11,21 @@ class AnimalsData extends BaseData {
         return super._isModelValid(model);
     }
 
+    getAnimalsByUserId(model) {
+        let result = this.collection
+            .find({ _id: objectId(model._id) })
+            .toArray();
+
+        if (this.ModelClass.toViewModel) {
+            result = result.then((models) => {
+                return models
+                    .map((obj) =>
+                        this.ModelClass.toViewModel(obj));
+            });
+        }
+        return result;
+    }
+
     updateAnimal(model) {
         // if (!this._isModelValid(model)) {
         //     return Promise.reject('Invalid model!');

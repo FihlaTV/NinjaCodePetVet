@@ -1,5 +1,6 @@
 const BaseData = require('./base/base.data');
 const User = require('../models/user.model');
+const objectId = require('mongodb').ObjectID;
 
 class UsersData extends BaseData {
     constructor(db) {
@@ -36,13 +37,31 @@ class UsersData extends BaseData {
 
     findById(userId) {
         userId = parseInt(userId, 10);
-        
+
         const user = this.collection.find( { '_id': userId });
         return new Promise((resolve, reject) => {
             if (!user) {
                 return reject('No such user');
             }
             return resolve(user);
+        });
+    }
+
+    updateUser(model) {
+        // if (!this._isModelValid(model)) {
+        //     return Promise.reject('Invalid model!');
+        // }
+
+        this.collection.updateOne(
+            { _id: objectId(model._id) },
+            {
+                $set: {
+                    address: model.address,
+                    phone: model.phone,
+                    password: model.password,
+                },
+            }).catch((err) => {
+            return err;
         });
     }
 }
