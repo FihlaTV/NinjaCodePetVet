@@ -2,8 +2,36 @@ window.onload = function() {
     $('#nav-btn-all-animals').addClass('active');
 };
 
-let $edit = $('.edit');
+$(() => {
+    let input = $('#search');
+    let searchBtn = $('#searchBtn');
+    let users = $('.username');
 
+    let usernames = [];
+
+    for (let i = 0; i < users.length; i += 1) {
+        usernames[i] = users[i].innerText;
+    }
+
+    input.typeahead({ source: usernames, showHintOnFocus: true, items: 'all' });
+
+    searchBtn.on('click', () => {
+        let username = $('ul.typeahead li.active').data('value');
+        $('.petsList').show();
+
+        $.ajax({
+            method: "GET",
+            url: "/allAnimals",
+            contentType: "application/json",
+            data: JSON.stringify({
+                ownerUsername: username
+            })
+        })
+    })
+});
+
+
+let $edit = $('.edit');
 $edit.on('click', (event) => {
     let $editButton = $(event.target);
     let li = event.target.parentElement.parentElement;
@@ -43,10 +71,10 @@ $edit.on('click', (event) => {
         inlineText.show();
         $editButton.show();
 
-        let currentId = $(li).children()[0].innerText;
-        let ownerAddress = $(li).children()[6].innerText.split(':')[1];
-        let ownerPhone = $(li).children()[7].innerText.split(':')[1];
-        let checkUp = $(li).children()[8].innerText.split(':')[1];
+        let currentId = $(li)[0].id;
+        let ownerAddress = $(li).children()[5].innerText.split(':')[1];
+        let ownerPhone = $(li).children()[6].innerText.split(':')[1];
+        let checkUp = $(li).children()[7].innerText.split(':')[1];
 
         $.ajax({
             method: "PUT",
@@ -74,3 +102,4 @@ $edit.on('click', (event) => {
         $okButton.hide();
     })
 });
+

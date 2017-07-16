@@ -1,7 +1,5 @@
 class BaseData {
-    constructor(db, ModelClass, validator) {
-        // TODO: create validator!
-        this.validator = validator;
+    constructor(db, ModelClass) {
         this.db = db;
         this.ModelClass = ModelClass;
         this.collectionName = this._getCollectionName();
@@ -9,11 +7,7 @@ class BaseData {
     }
 
     getAll() {
-        const filter = {};
-        const options = {};
-        let result = this.collection
-            .find(filter, options)
-            .toArray();
+        let result = this.collection.find().toArray();
 
         if (this.ModelClass.toViewModel) {
             result = result.then((models) => {
@@ -26,19 +20,11 @@ class BaseData {
     }
 
     create(model) {
-        // if (!this._isModelValid(model)) {
-        //     return Promise.reject('Invalid model!');
-        // }
-
         return this.collection.insertOne(model)
             .then((dbo) => {
                 return this.ModelClass.toViewModel(dbo.ops[0]);
             });
     }
-
-    // _isModelValid(model) {
-    //     return this.validator.isValid(model);
-    // }
 
     _getCollectionName() {
         return this.ModelClass.name.toLowerCase() + 's';

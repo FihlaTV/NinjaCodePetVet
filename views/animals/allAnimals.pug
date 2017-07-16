@@ -1,16 +1,18 @@
 extends ../_master
 
 block scripts
+    script(src="libs/bootstrap-3-typeahead/bootstrap3-typeahead.js")
 block head
     title All Animals Page
 block body
     h1 All Animals
-    ol
+    fieldset.mce-i-searchreplace(align='center')
+        input#search(type="text" name="search" placeholder="Search by username..." autocomplete="off")
+        button#searchBtn.mce-i-searchreplace
+            | Search
+    ol.petsList(style='display:none;')
         each pet in context
-            li
-                p(style='display:none;')
-                    inline
-                        =pet.id
+            li(id = pet.id)
                 p
                     strong Pet Name:
                     inline
@@ -29,7 +31,7 @@ block body
                         =pet.birthDate
                 p
                     strong Pet Owner Username:
-                    inline
+                    inline.username
                         =pet.ownerUsername
                 p
                     strong Owner Address:
@@ -57,4 +59,4 @@ block body
                 button.btn.btn-success(style='display:none;')
                     | Update
             br
-    script(src="/static/js/allAnimals.controller.js")
+    script(src="/static/js/controllers/allAnimals.controller.js")

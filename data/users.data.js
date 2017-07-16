@@ -22,6 +22,19 @@ class UsersData extends BaseData {
             });
     }
 
+    // TODO: check if user exists, before create it!
+    /* create(model) {
+        // const usernameToLower = model.username.toLowerCase();
+        const user = this.collection.findOne({ 'username': model.username },
+            (resolve, reject) => {
+                if (!user) {
+                    return reject('USER ALREADY EXISTS!');
+                }
+                return resolve(super.create(model));
+            });
+    } */
+
+
     findByUsername(username) {
         const usernameToLower = username.toLowerCase();
         const user = this.collection.find({ 'username': usernameToLower });
@@ -29,7 +42,7 @@ class UsersData extends BaseData {
             if (!user) {
                 return reject('No such user');
             }
-            console.log('=========== USER IN FIND BY USERNAME ======');
+            console.log('=========== USER IS FIND BY USERNAME ======');
             console.log(user);
             return resolve(user);
         });
@@ -38,7 +51,7 @@ class UsersData extends BaseData {
     findById(userId) {
         userId = parseInt(userId, 10);
 
-        const user = this.collection.find( { '_id': userId });
+        const user = this.collection.find({ '_id': userId });
         return new Promise((resolve, reject) => {
             if (!user) {
                 return reject('No such user');
