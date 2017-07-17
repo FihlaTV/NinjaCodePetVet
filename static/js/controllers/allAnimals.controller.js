@@ -19,14 +19,14 @@ $(() => {
         let username = $('ul.typeahead li.active').data('value');
         $('.petsList').show();
 
-        $.ajax({
+      /*  $.ajax({
             method: "GET",
             url: "/allAnimals",
             contentType: "application/json",
             data: JSON.stringify({
                 ownerUsername: username
             })
-        })
+        })*/
     })
 });
 

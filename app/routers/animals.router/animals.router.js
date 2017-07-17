@@ -11,16 +11,6 @@ const attachTo = (app, data) => {
         return controller.getAll(req, res);
     });
 
-    app.get('/allAnimals', (req, res, next) => {
-        // Uncomment below to work without user
-        // if (!req.user) {
-        //     return res.redirect('/login');
-        // }
-        return next();
-    }, (req, res) => {
-        return controller.getAnimalsByUsername(req, res);
-    });
-
     app.get('/createAnimal', (req, res) => {
         return res.render('animals/createAnimal');
     });

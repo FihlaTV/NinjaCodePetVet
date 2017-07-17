@@ -22,21 +22,6 @@ class AnimalsData extends BaseData {
         return result;
     }
 
-    getAnimalsByUsername(model) {
-        let result = this.collection
-            .find({ ownerUsername: model.ownerUsername })
-            .toArray();
-
-        if (this.ModelClass.toViewModel) {
-            result = result.then((models) => {
-                return models
-                    .map((obj) =>
-                        this.ModelClass.toViewModel(obj));
-            });
-        }
-        return result;
-    }
-
     updateAnimal(model) {
         this.collection.updateOne(
             { _id: objectId(model._id) },

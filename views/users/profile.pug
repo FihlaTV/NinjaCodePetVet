@@ -1,83 +1,93 @@
 extends ../_master
 
 block scripts
-
 block head
     title Profile
 block body
     h1 Profile
         h3 Hi,
             inline
-                =username
-        div.jumbotron.col-lg-10
-            fieldset
-                section.form-group
-                    div.col-lg-10.col-lg-offset-2
-                        p(style='display:none;')
-                            inline
-                               =_id
-                        p
-                            font(size="3em") Owner Address:
-                            inline
-                                =address
-                            input(name="address" style='display:none;')
-                            img.edit(src='/static/img/icons/edit.png', style='width:15px')
-                            img.ok(src='/static/img/icons/ok.png', style='display:none; width:17px')
-                        p
-                            font(size="3em") Owner Phone:
-                            inline
-                                =phone
-                            input(name="phone" style='display:none;')
-                            img.edit(src='/static/img/icons/edit.png', style='width:15px')
-                            img.ok(src='/static/img/icons/ok.png', style='display:none; width:17px')
-                        p
-                            font(size="3em") Owner Password:
-                            inline
-                                =password
-                            input(name="password" style='display:none;')
-                            img.edit(src='/static/img/icons/edit.png', style='width:15px')
-                            img.ok(src='/static/img/icons/ok.png', style='display:none; width:17px')
-                        button.btn.btn-default(style='display:none;')
-                            | Cancel
-                        button.btn.btn-success(style='display:none;')
-                            | Update
+                = ' ' + username
 
-        div.jumbotron.col-lg-10
-            form.form-horizontal(action="/animals", method="POST")
-                fieldset
-                    section.form-group
-                        label.col-lg-2.control-label(for='inputPetName') Pet Name
-                        div.col-lg-10
-                            input#inputPetName.form-control(placeholder='Pet name', name='name', autocomplete='off', type='text', required)
-                    section.form-group
-                        label.col-lg-2.control-label(for='inputPetKind') Pet Kind
-                        div.col-lg-10
-                            input#inputPetKind.form-control(placeholder='Pet kind', name='type', autocomplete='off', type='text', required)
-                    section.form-group
-                        label.col-lg-2.control-label(for='inputPetBreed') Pet Breed
-                        div.col-lg-10
-                            input#inputPetBreed.form-control(placeholder='Pet breed', name='breed', autocomplete='off', type='text', required)
-                    section.form-group
-                        label.col-lg-2.control-label(for='inputPetBirthDate') Pet Birth Date
-                        div.col-lg-10
-                            input#inputPetBirthDate.form-control(placeholder='Pet birth date', name='birthDate', autocomplete='off', type='text', required)
-                    section.form-group(style='display:none;')
-                        div.col-lg-10
-                            input.form-control(name='ownerId', type='text', value=_id)
-                    section.form-group(style='display:none;')
-                        div.col-lg-10
-                            input.form-control(name='ownerUsername', type='text', value=username)
-                    section.form-group(style='display:none;')
-                        div.col-lg-10
-                            input.form-control(name='ownerAddress', type='text', value=address)
-                    section.form-group(style='display:none;')
-                        div.col-lg-10
-                            input.form-control(name='ownerPhone', type='text', value=phone)
-                    section.form-group(style='display:none;')
-                        div.col-lg-10
-                            input.form-control(name='checkUp', type='text', value='no check-ups')
-                    section.form-group
-                        div.col-lg-10.col-lg-offset-2
-                            button.btn.btn-primary(type='submit') Add Animal
+        div#wrapper.jumbotron.col-lg-10
+            button.btn.btn-default(type='button', data-toggle='collapse', data-target='#collapseMenuFirst', aria-expanded='false', aria-controls='collapseExample')
+                | Profile's Information
+            button.btn.btn-default(type='button', data-toggle='collapse', data-target='#collapseMenuSecond', aria-expanded='false', aria-controls='collapseExample')
+                | Add Your Pet
+
+        #collapseMenuFirst.collapse
+            .card.card-block
+                div.jumbotron.col-lg-10
+                    fieldset
+                        section.form-group
+                            div.col-lg-10.col-lg-offset-2
+                                p(style='display:none;')
+                                    inline
+                                        =_id
+                                p
+                                    font(size="3em") Owner Address:
+                                    inline
+                                        =address
+                                    input(name="address" style='display:none;' autocomplete='off', type='text', required)
+                                    img.edit(src='/static/img/icons/edit.png', style='width:15px')
+                                    img.ok(src='/static/img/icons/ok.png', style='display:none; width:20px')
+                                p
+                                    font(size="3em") Owner Phone:
+                                    inline
+                                        =phone
+                                    input(name="phone" style='display:none;' autocomplete='off', type='text', required)
+                                    img.edit(src='/static/img/icons/edit.png', style='width:15px')
+                                    img.ok(src='/static/img/icons/ok.png', style='display:none; width:20px')
+                                p
+                                    inline#password
+                                        =password
+                                    input(name="password" style='display:none;' placeholder="Enter new password..." autocomplete='off', type='password', required)
+                                    button.edit.btn.btn-primary
+                                        | Change password
+                                    img.ok(src='/static/img/icons/ok.png', style='display:none; width:20px')
+                                button.btn.btn-default(style='display:none;')
+                                    | Cancel
+                                button.btn.btn-success(style='display:none;')
+                                    | Update
+
+        #collapseMenuSecond.collapse
+            .card.card-block
+                div.jumbotron.col-lg-10
+                    form.form-horizontal(action="/animals", method="POST")
+                        fieldset
+                            section.form-group
+                                label.col-lg-2.control-label(for='inputPetName') Pet Name
+                                div.col-lg-10
+                                    input#inputPetName.form-control(placeholder='Pet name', name='name', autocomplete='off', type='text', required)
+                            section.form-group
+                                label.col-lg-2.control-label(for='inputPetKind') Pet Kind
+                                div.col-lg-10
+                                    input#inputPetKind.form-control(placeholder='Pet kind', name='type', autocomplete='off', type='text', required)
+                            section.form-group
+                                label.col-lg-2.control-label(for='inputPetBreed') Pet Breed
+                                div.col-lg-10
+                                    input#inputPetBreed.form-control(placeholder='Pet breed', name='breed', autocomplete='off', type='text', required)
+                            section.form-group
+                                label.col-lg-2.control-label(for='inputPetBirthDate') Pet Birth Date
+                                div.col-lg-10
+                                    input#inputPetBirthDate.form-control(placeholder='Pet birth date', name='birthDate', autocomplete='off', type='text', required)
+                            section.form-group(style='display:none;')
+                                div.col-lg-10
+                                    input.form-control(name='ownerId', type='text', value=_id)
+                            section.form-group(style='display:none;')
+                                div.col-lg-10
+                                    input.form-control(name='ownerUsername', type='text', value=username)
+                            section.form-group(style='display:none;')
+                                div.col-lg-10
+                                    input.form-control(name='ownerAddress', type='text', value=address)
+                            section.form-group(style='display:none;')
+                                div.col-lg-10
+                                    input.form-control(name='ownerPhone', type='text', value=phone)
+                            section.form-group(style='display:none;')
+                                div.col-lg-10
+                                    input.form-control(name='checkUp', type='text', value='no check-ups')
+                            section.form-group
+                                div.col-lg-10.col-lg-offset-2
+                                    button.btn.btn-primary(type='submit') Add Animal
 
     script(src="/static/js/controllers/profile.controller.js")
