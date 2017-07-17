@@ -3,7 +3,7 @@ window.onload = function() {
 };
 
 $(() => {
-    let input = $('#search');
+    let input = $('#searchField');
     let searchBtn = $('#searchBtn');
     let users = $('.username');
 
@@ -14,22 +14,30 @@ $(() => {
     }
 
     input.typeahead({ source: usernames, showHintOnFocus: true, items: 'all' });
+    let warning = $('#warning');
 
     searchBtn.on('click', () => {
-        let username = $('ul.typeahead li.active').data('value');
-        $('.petsList').show();
+        let inputValue = $('#searchField').val();
+        let petsList = $('.petsList > li');
+        let isFound = false;
+        petsList.hide();
+        warning.hide();
 
-      /*  $.ajax({
-            method: "GET",
-            url: "/allAnimals",
-            contentType: "application/json",
-            data: JSON.stringify({
-                ownerUsername: username
-            })
-        })*/
+        for (let i = 0; i < petsList.length; i += 1) {
+            let username = petsList[i].childNodes[4].innerText.split(':')[1];
+            if (inputValue.length === 0) {
+                break;
+            }
+            else if (inputValue === username) {
+                petsList[i].style.display = "block";
+                isFound = true;
+            }
+            else if (i === petsList.length - 1 && !isFound) {
+                warning.show();
+            }
+        }
     })
 });
-
 
 let $edit = $('.edit');
 $edit.on('click', (event) => {
@@ -102,4 +110,3 @@ $edit.on('click', (event) => {
         $okButton.hide();
     })
 });
-

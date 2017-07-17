@@ -8,8 +8,42 @@
     justify-content: center;
 }
 
+#warning {
+    display: inline-block;
+    font-weight: bold;
+    color: #b3251b;
+}
+
+.search {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#searchField {
+    width: 50%;
+    margin-right: 30px;
+}
+
 .navbar-header a {
     padding-top: 0.8rem;
+}
+
+.petsList {
+    display: inline-block;
+
+    -webkit-columns: 3 200px;
+    -moz-columns: 3 200px;
+    columns: 3 200px;
+    -webkit-column-gap: 5em;
+    -moz-column-gap: 5em;
+    column-gap: 5em;
+}
+
+.petsList > li {
+    display: block;
+    padding-bottom: 30px;
 }
 
 .edit, .ok {
