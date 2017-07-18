@@ -25,9 +25,7 @@ const attachTo = (app, data) => {
         failureRedirect: '/login',
     }),
         (req, res) => {
-            return res.send(req.body);
-            // return controller.getUser(req, res);
-            // res.redirect('/profile');
+            return controller.getUser(req, res);
     });
 
     app.get('/logout', (req, res) => {
