@@ -13,6 +13,7 @@ $(() => {
         usernames[i] = users[i].innerText;
     }
 
+    usernames = [...new Set(usernames)];
     input.typeahead({ source: usernames, showHintOnFocus: true, items: 'all' });
     let warning = $('#warning');
 
