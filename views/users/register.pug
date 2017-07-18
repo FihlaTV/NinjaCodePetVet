@@ -6,6 +6,7 @@ block head
    title Register
 block body
     h1 Register
+    != messages()
     div.jumbotron.col-lg-10
         form.form-horizontal(action="/register", method="POST")
             fieldset

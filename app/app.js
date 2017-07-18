@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const flash = require('connect-flash');
+const messages = require('express-messages');
 
 const init = (data) => {
     const app = express();
@@ -14,18 +16,18 @@ const init = (data) => {
     app.use('/static', express.static('./static'));
     app.use(cookieParser('keyboard cat'));
     app.use(session({ cookie: { maxAge: 60000 } }));
+    app.use(flash());
 
-    app.use(require('connect-flash')());
     app.use((req, res, next) => {
-        res.locals.messages = require('express-messages')(req, res);
+        res.locals.messages = messages(req, res);
         next();
     });
 
     require('../config/auth.config').init(app, data);
     // delete below middleware
     app.use((req, res, next) => {
-        console.log('-- Current user --');
-        console.log(req.user);
+        // console.log('-- Current user --');
+        // console.log(req.user);
         next();
     });
 

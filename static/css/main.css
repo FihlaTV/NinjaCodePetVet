@@ -60,11 +60,17 @@
     display: inline-block;
 }
 
+.info > li {
+    display: inline-block;
+    font-weight: bold;
+    color: #b3251b;
+}
+
 p > inline {
     margin-left: 5px;
     margin-right: 5px;
 }
 
-ol {
+ol, ul {
     list-style-type: none;
 }

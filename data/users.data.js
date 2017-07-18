@@ -22,17 +22,17 @@ class UsersData extends BaseData {
             });
     }
 
-    // TODO: check if user exists, before create it!
-    /* create(model) {
-        // const usernameToLower = model.username.toLowerCase();
-        const user = this.collection.findOne({ 'username': model.username },
-            (resolve, reject) => {
+    create(model) {
+        const username = model.username;
+        return this.collection
+            .findOne({ username })
+            .then((user) => {
                 if (!user) {
-                    return reject('USER ALREADY EXISTS!');
+                    return super.create(model);
                 }
-                return resolve(super.create(model));
+                throw new Error('USERNAME ALREADY EXISTS!');
             });
-    } */
+    }
 
 
     findByUsername(username) {
@@ -42,8 +42,8 @@ class UsersData extends BaseData {
             if (!user) {
                 return reject('No such user');
             }
-            console.log('=========== USER IS FIND BY USERNAME ======');
-            console.log(user);
+            // console.log('=========== USER IS FIND BY USERNAME ======');
+            // console.log(user);
             return resolve(user);
         });
     }

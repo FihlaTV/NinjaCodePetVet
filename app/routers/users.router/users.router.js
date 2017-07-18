@@ -30,17 +30,17 @@ const attachTo = (app, data) => {
         }
         return next();
     }, (req, res) => {
-            return controller.getUser(req, res);
+        return controller.getUser(req, res);
     });
 
     app.post('/login', passport.authenticate('local', {
-        failureRedirect: '/login',
-    }),
+            failureRedirect: '/login',
+        }),
         (req, res) => {
             return res.send(req.body);
             // return controller.getUser(req, res);
             // res.redirect('/profile');
-    });
+        });
 
     app.get('/logout', (req, res) => {
         req.logout();
@@ -70,14 +70,14 @@ const attachTo = (app, data) => {
                     if (er) {
                         return next(er);
                     }
-
                     return controller.getUser(req, res);
                     // return res.redirect('/profile');
                 });
             })
-            .catch((err) => {
-                req.flash('error', err);
-                return res.redirect('/register');
+            .catch(() => {
+                req.flash('info', 'Username already exists! ' +
+                    'Please try another one :)');
+                res.redirect('/register');
             });
     });
 };
