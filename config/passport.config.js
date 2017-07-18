@@ -2,8 +2,8 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
 const passportConfig = (app, data) => {
-    console.log('=========== DATA IN PASSPORT CONFIG ======');
-    console.log(data.users.findByUsername('vasilv'));
+    // console.log('=========== DATA IN PASSPORT CONFIG ======');
+    // console.log(data.users.findByUsername('vasilv'));
     app.use(passport.initialize());
     app.use(passport.session());
 
