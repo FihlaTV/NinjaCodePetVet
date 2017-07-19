@@ -7,7 +7,7 @@ block body
     h1 Profile
         h3 Hi,
             inline
-                = ' ' + username
+                = ' ' + context.user.username
 
         div#wrapper.jumbotron.col-lg-10
             button.btn.btn-default(type='button', data-toggle='collapse', data-target='#collapseMenuFirst', aria-expanded='false', aria-controls='collapseExample')

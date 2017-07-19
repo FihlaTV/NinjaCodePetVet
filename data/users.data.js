@@ -1,6 +1,6 @@
 const BaseData = require('./base/base.data');
 const User = require('../models/user.model');
-const objectId = require('mongodb').ObjectID;
+const ObjectID = require('mongodb').ObjectID;
 
 class UsersData extends BaseData {
     constructor(db) {
@@ -37,27 +37,15 @@ class UsersData extends BaseData {
 
     findByUsername(username) {
         const usernameToLower = username.toLowerCase();
-        const user = this.collection.find({ 'username': usernameToLower });
-        return new Promise((resolve, reject) => {
-            if (!user) {
-                return reject('No such user');
-            }
-            // console.log('=========== USER IS FIND BY USERNAME ======');
-            // console.log(user);
-            return resolve(user);
-        });
+        return this.collection.findOne({ username: usernameToLower });
     }
 
     findById(userId) {
-        userId = parseInt(userId, 10);
-
-        const user = this.collection.find({ '_id': userId });
-        return new Promise((resolve, reject) => {
-            if (!user) {
-                return reject('No such user');
-            }
-            return resolve(user);
+        const user = this.collection.findOne({
+            _id: new ObjectID(userId),
         });
+        
+        return Promise.resolve(user);
     }
 
     updateUser(model) {
@@ -66,7 +54,7 @@ class UsersData extends BaseData {
         // }
 
         this.collection.updateOne(
-            { _id: objectId(model._id) },
+            { _id: new ObjectID(model._id) },
             {
                 $set: {
                     address: model.address,

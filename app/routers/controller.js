@@ -1,10 +1,13 @@
 const init = (data) => {
     const controller = {
         getUser(req) {
-            const userId = parseInt(req.body.userId, 10);
-            return data.users.findById(userId)
+            console.log('=========== USER IN CONTROLLER ======');
+            console.log(req.body);
+            // const userId = parseInt(req.body.userId, 10);
+            if (req.user) {
+                return data.users.findById(req.user.userId)
                 .then((user) => {
-                    // user.isAnonymous = false;
+                    user.isAnonymous = true;
 
                     if (Object.keys(user).length > 0) {
                         user.isAnonymous = false;
@@ -12,9 +15,11 @@ const init = (data) => {
 
                     return Promise.resolve(user);
                 });
+            }
+
+            return Promise.resolve({});
         },
     };
-
     return controller;
 };
 

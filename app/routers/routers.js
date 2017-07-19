@@ -9,9 +9,12 @@ const attachTo = (app, data) => {
     app.get('/', (req, res) => {
         controller.getUser(req)
             .then((user) => {
-                console.log('======== USER');
-                console.log(user);
-                return res.render('home', { context: user });
+                user.isAnonymous = true;
+                return res.render('home', {
+                    context: {
+                        user: user,
+                    },
+                });
             });
     });
 

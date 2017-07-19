@@ -1,8 +1,10 @@
 const init = (data) => {
     const controller = {
         getUser(req, res) {
-            const userId = parseInt(req.body.userId, 10);
-            return data.users.findById(userId)
+        console.log('=========== REQ IN USER CONTROLLER ======');
+        console.log(req.user);
+            // const userId = parseInt(req.body.userId, 10);
+            return data.users.findById(req.user.userId)
                 .then((user) => {
                     return res.render('users/profile', req.body);
                 });

@@ -1,10 +1,15 @@
 const passport = require('passport');
 
 const attachTo = (app, data) => {
-    const controller = require('./controller').init(data);
+    const controller = require('./users.controller').init(data);
 
     app.get('/login', (req, res) => {
-        return res.render('users/login');
+        const context = {
+            user: {
+                isAnonymous: true,
+            },
+        };
+        return res.render('users/login', { context: context });
     });
 
     app.get('/register', (req, res) => {
@@ -25,22 +30,26 @@ const attachTo = (app, data) => {
 
     app.get('/profile', (req, res, next) => {
         // Uncomment below to work without user
-        if (!req.user) {
-            return res.redirect('/login');
-        }
+        // if (!req.user) {
+        //     return res.redirect('/login');
+        // }
         return next();
     }, (req, res) => {
         return controller.getUser(req, res);
     });
 
-    app.post('/login', passport.authenticate('local', {
-        failureRedirect: '/login',
-    }),
+    app.post('/login',
+        passport.authenticate('local', {
+            failureRedirect: '/login',
+        }),
         (req, res) => {
-            return res.send(req.body);
-            // return controller.getUser(req, res);
-            // res.redirect('/profile');
-        });
+            req.user.isAnonymous = false;
+            res.render('users/profile', { context: {
+                user: req.user,
+                },
+            });
+        }
+    );
 
     app.get('/logout', (req, res) => {
         req.logout();
@@ -71,7 +80,6 @@ const attachTo = (app, data) => {
                         return next(er);
                     }
                     return controller.getUser(req, res);
-                    // return res.redirect('/profile');
                 });
             })
             .catch(() => {
