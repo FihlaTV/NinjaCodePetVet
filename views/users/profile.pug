@@ -23,24 +23,24 @@ block body
                             div.col-lg-10.col-lg-offset-2
                                 p(style='display:none;')
                                     inline
-                                        =_id
+                                        =context.user._id
                                 p
                                     font(size="3em") Owner Address:
                                     inline
-                                        =address
+                                        =context.user.address
                                     input(name="address" style='display:none;' autocomplete='off', type='text', required)
                                     img.edit(src='/static/img/icons/edit.png', style='width:15px')
                                     img.ok(src='/static/img/icons/ok.png', style='display:none; width:20px')
                                 p
                                     font(size="3em") Owner Phone:
                                     inline
-                                        =phone
+                                        =context.user.phone
                                     input(name="phone" style='display:none;' autocomplete='off', type='text', required)
                                     img.edit(src='/static/img/icons/edit.png', style='width:15px')
                                     img.ok(src='/static/img/icons/ok.png', style='display:none; width:20px')
                                 p
                                     inline#password
-                                        =password
+                                        =context.user.password
                                     input(name="password" style='display:none;' placeholder="Enter new password..." autocomplete='off', type='password', required)
                                     button.edit.btn.btn-primary
                                         | Change password
@@ -73,21 +73,27 @@ block body
                                     input#inputPetBirthDate.form-control(placeholder='Pet birth date', name='birthDate', autocomplete='off', type='text', required)
                             section.form-group(style='display:none;')
                                 div.col-lg-10
-                                    input.form-control(name='ownerId', type='text', value=_id)
+                                    input.form-control(name='ownerId', type='text', value=context.user._id)
                             section.form-group(style='display:none;')
                                 div.col-lg-10
-                                    input.form-control(name='ownerUsername', type='text', value=username)
+                                    input.form-control(name='ownerUsername', type='text', value=context.user.username)
                             section.form-group(style='display:none;')
                                 div.col-lg-10
-                                    input.form-control(name='ownerAddress', type='text', value=address)
+                                    input.form-control(name='ownerAddress', type='text', value=context.user.address)
                             section.form-group(style='display:none;')
                                 div.col-lg-10
-                                    input.form-control(name='ownerPhone', type='text', value=phone)
+                                    input.form-control(name='ownerPhone', type='text', value=context.user.phone)
                             section.form-group(style='display:none;')
                                 div.col-lg-10
                                     input.form-control(name='checkUp', type='text', value='no check-ups')
                             section.form-group
                                 div.col-lg-10.col-lg-offset-2
                                     button.btn.btn-primary(type='submit') Add Animal
+
+        each pet in context
+            p
+                strong Pet Name:
+                inline
+                    =pet.name
 
     script(src="/static/js/controllers/profile.controller.js")

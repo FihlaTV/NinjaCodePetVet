@@ -8,6 +8,14 @@ const init = (data) => {
                     });
                 });
         },
+        getAnimalsByUserId(req, res) {
+            return data.animals.getAnimalsByUserId(req.body)
+                .then((animals) => {
+                    return res.render('user/profile', {
+                        context: animals,
+                    });
+                });
+        },
     };
 
     return controller;

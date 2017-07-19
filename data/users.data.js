@@ -44,7 +44,7 @@ class UsersData extends BaseData {
         const user = this.collection.findOne({
             _id: new ObjectID(userId),
         });
-        
+
         return Promise.resolve(user);
     }
 

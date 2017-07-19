@@ -8,7 +8,7 @@
     justify-content: center;
 }
 
-#warning {
+#warning, .info > li {
     display: inline-block;
     font-weight: bold;
     color: #b3251b;
@@ -58,12 +58,6 @@
 
 .btn-success {
     display: inline-block;
-}
-
-.info > li {
-    display: inline-block;
-    font-weight: bold;
-    color: #b3251b;
 }
 
 p > inline {

@@ -2,6 +2,8 @@ const passport = require('passport');
 
 const attachTo = (app, data) => {
     const controller = require('./users.controller').init(data);
+    const animalsController =
+        require('../animals.router/controller').init(data);
 
     app.get('/login', (req, res) => {
         const context = {
@@ -38,14 +40,25 @@ const attachTo = (app, data) => {
         return controller.getUser(req, res);
     });
 
+    app.get('/profile', (req, res, next) => {
+        // Uncomment below to work without user
+        // if (!req.user) {
+        //     return res.redirect('/login');
+        // }
+        return next();
+    }, (req, res) => {
+        return animalsController.getAnimalsByUserId(req, res);
+    });
+
     app.post('/login',
         passport.authenticate('local', {
             failureRedirect: '/login',
         }),
         (req, res) => {
             req.user.isAnonymous = false;
-            res.render('users/profile', { context: {
-                user: req.user,
+            res.render('users/profile', {
+                context: {
+                    user: req.user,
                 },
             });
         }
@@ -59,18 +72,14 @@ const attachTo = (app, data) => {
     app.post('/register', (req, res, next) => {
         // validate registration data
         if (!req.body.username || req.body.username.length < 3) {
-
+            req.flash('info', 'Username must be at least 3 characters long!');
+            res.redirect('/register');
         }
 
         if (!req.body.password || req.body.password.length < 6) {
-
+            req.flash('info', 'Password must be at least 6 characters long!');
+            res.redirect('/register');
         }
-
-        // const user = {
-        //     username: req.body.username,
-        //     password: req.body.password,
-        //
-        // };
 
         const user = req.body;
         return data.users.create(user)
