@@ -44,15 +44,11 @@ mixin nav()
                 //-         input.form-control(placeholder='Search', type='text')
                 //-     button.btn.btn-default(type='submit') Submit
                 ul.nav.navbar-nav.navbar-right
-                    if context.user.isAnonymous
-                        li(id="nav-btn-login")
-                            a(href='/login') Log In
-                        li(id="nav-btn-register")
-                            a(href='/register') Register
-                    else
-                        li(id="nav-btn-profile")
-                            a(href='/profile') Hi,
-                                inline
-                                    =context.user.username
-                        li(id="nav-btn-logout")
-                            a(href='/logout') Log Out
+                    li(id="nav-btn-login")
+                        a(href='/login') Log In
+                    li(id="nav-btn-register")
+                        a(href='/register') Register
+                    li(id="nav-btn-profile")
+                        a(href='/profile') Hi,
+                    li(id="nav-btn-logout")
+                        a(href='/logout') Log Out
