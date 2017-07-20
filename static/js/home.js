@@ -1,5 +1,9 @@
-window.onload=function () {
+window.onload = function () {
     $('#nav-btn-home').addClass('active');
-    
-    document.body.innerHTML += 'Added through javascript';
+
+    $(() => {
+        $('.carousel').carousel({
+            interval: 3000
+        })
+    })
 };
