@@ -3,6 +3,18 @@ window.onload = function() {
     $('#password').hide();
 };
 
+/* $(() => {
+    let ownerId = $('#id').text();
+    $.ajax({
+        method: "POST",
+        url: "/login",
+        contentType: "application/json",
+        data: JSON.stringify({
+            _id: ownerId,
+        })
+    })
+}); */
+
 let $edit = $('.edit');
 $edit.on('click', (event) => {
     let $editButton = $(event.target);

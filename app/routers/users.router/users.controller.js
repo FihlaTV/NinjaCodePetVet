@@ -6,7 +6,7 @@ const init = (data) => {
             // const userId = parseInt(req.body.userId, 10);
             return data.users.findById(req.user.userId)
                 .then((user) => {
-                    return res.render('users/profile', req.body);
+                    return res.render('users/profile', user);
                 });
         },
     };
