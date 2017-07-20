@@ -1,9 +1,7 @@
 const passport = require('passport');
 
 const attachTo = (app, data) => {
-    const controller = require('./users.controller').init(data);
-    const animalsController =
-        require('../animals.router/animals.controller').init(data);
+    const usersController = require('./users.controller').init(data);
 
     app.get('/login', (req, res) => {
         const context = {
@@ -18,26 +16,23 @@ const attachTo = (app, data) => {
         return res.render('users/register');
     });
 
-    app.put('/profile', (req, res, next) => {
-        // Uncomment below to work without user
-        // if (!req.user) {
-        //     return res.redirect('/login');
-        // }
+    app.get('/profile', (req, res, next) => {
+        if (!req.isAuthenticated()) {
+            return res.redirect('/login');
+        }
         return next();
-    }, (req, res) => {
-        const user = req.body;
-        // validate item
-        return data.users.updateUser(user);
+        }, (req, res) => {
+            return usersController.getUser(req, res);
     });
 
-    app.get('/profile', (req, res, next) => {
-        // Uncomment below to work without user
-        // if (!req.user) {
-        //     return res.redirect('/login');
-        // }
+    app.put('/profile', (req, res, next) => {
+        if (!req.isAuthenticated()) {
+            return res.redirect('/login');
+        }
         return next();
-    }, (req, res) => {
-        return controller.getUser(req, res);
+        }, (req, res) => {
+            const user = req.body;
+            return data.users.updateUser(user);
     });
 
     app.post('/login',
@@ -45,13 +40,7 @@ const attachTo = (app, data) => {
             failureRedirect: '/login',
         }),
         (req, res) => {
-            req.user.isAnonymous = false;
-            res.render('users/profile', {
-                context: {
-                    user: req.user,
-                },
-            });
-            return animalsController.getAnimalsByOwnerUsername(req, res);
+            res.redirect('\profile');
         }
     );
 
@@ -79,7 +68,7 @@ const attachTo = (app, data) => {
                     if (er) {
                         return next(er);
                     }
-                    return controller.getUser(req, res);
+                    return usersController.getUser(req, res);
                 });
             })
             .catch(() => {
