@@ -7,9 +7,9 @@ class AnimalsData extends BaseData {
         super(db, Animal, Animal);
     }
 
-    getAnimalsByUserId(model) {
+    getAnimalsByOwnerUsername(model) {
         let result = this.collection
-            .find({ ownerId: model._id })
+            .find({ 'ownerUsername': model.username })
             .toArray();
 
         if (this.ModelClass.toViewModel) {
@@ -32,8 +32,8 @@ class AnimalsData extends BaseData {
                     checkUp: model.checkUp,
                 },
             }).catch((err) => {
-            return err;
-        });
+                return err;
+            });
     }
 }
 

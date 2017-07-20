@@ -1,5 +1,5 @@
 const attachTo = (app, data) => {
-    const controller = require('./controller').init(data);
+    const controller = require('./animals.controller').init(data);
 
     app.get('/allAnimals', (req, res, next) => {
         // Uncomment below to work without user

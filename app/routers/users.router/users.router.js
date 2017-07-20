@@ -3,7 +3,7 @@ const passport = require('passport');
 const attachTo = (app, data) => {
     const controller = require('./users.controller').init(data);
     const animalsController =
-        require('../animals.router/controller').init(data);
+        require('../animals.router/animals.controller').init(data);
 
     app.get('/login', (req, res) => {
         const context = {
@@ -40,16 +40,6 @@ const attachTo = (app, data) => {
         return controller.getUser(req, res);
     });
 
-    app.get('/profile', (req, res, next) => {
-        // Uncomment below to work without user
-        // if (!req.user) {
-        //     return res.redirect('/login');
-        // }
-        return next();
-    }, (req, res) => {
-        return animalsController.getAnimalsByUserId(req, res);
-    });
-
     app.post('/login',
         passport.authenticate('local', {
             failureRedirect: '/login',
@@ -61,6 +51,7 @@ const attachTo = (app, data) => {
                     user: req.user,
                 },
             });
+            return animalsController.getAnimalsByOwnerUsername(req, res);
         }
     );
 
