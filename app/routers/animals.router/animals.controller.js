@@ -9,12 +9,7 @@ const init = (data) => {
                 });
         },
         getAnimalsByOwnerUsername(req, res) {
-            return data.animals.getAnimalsByOwnerUsername(req.body)
-                .then((animals) => {
-                    return res.render('users/profile', {
-                        context: animals,
-                    });
-                });
+            return data.animals.getAnimalsByOwnerUsername(req.body);
         },
     };
 

@@ -1,12 +1,21 @@
 const init = (data) => {
     const controller = {
         getUser(req, res) {
-        console.log('=========== REQ IN USER CONTROLLER ======');
-        console.log(req.user);
-            // const userId = parseInt(req.body.userId, 10);
-            return data.users.findById(req.user.userId)
+            const animalsController =
+                require('../animals.router/animals.controller').init(data);
+
+            return data.users.findById(req.user._id)
                 .then((user) => {
-                    return res.render('users/profile', user);
+                    user.isAnonymous = false;
+                    return animalsController.getAnimalsByOwnerUsername(req, res)
+                        .then((animals) => {
+                            return res.render('users/profile', {
+                                context: {
+                                    user: user,
+                                    animals: animals,
+                                },
+                            });
+                        });
                 });
         },
     };

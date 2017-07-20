@@ -2,10 +2,9 @@ const attachTo = (app, data) => {
     const controller = require('./animals.controller').init(data);
 
     app.get('/allAnimals', (req, res, next) => {
-        // Uncomment below to work without user
-        // if (!req.user) {
-        //     return res.redirect('/login');
-        // }
+        if (!req.user) {
+            return res.redirect('/login');
+        }
         return next();
     }, (req, res) => {
         return controller.getAll(req, res);
@@ -16,10 +15,9 @@ const attachTo = (app, data) => {
     });
 
     app.put('/animals', (req, res, next) => {
-        // Uncomment below to work without user
-        // if (!req.user) {
-        //     return res.redirect('/login');
-        // }
+        if (!req.isAuthenticated()) {
+            return res.redirect('/login');
+        }
         return next();
     }, (req, res) => {
         const animal = req.body;
@@ -28,10 +26,9 @@ const attachTo = (app, data) => {
     });
 
     app.post('/animals', (req, res, next) => {
-        // Uncomment below to work without user
-        // if (!req.user) {
-        //     return res.redirect('/login');
-        // }
+        if (!req.isAuthenticated()) {
+            return res.redirect('/login');
+        }
         return next();
     }, (req, res) => {
         const animal = req.body;

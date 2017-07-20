@@ -9,7 +9,7 @@ class AnimalsData extends BaseData {
 
     getAnimalsByOwnerUsername(model) {
         let result = this.collection
-            .find({ 'ownerUsername': model.username })
+            .find({ 'owner': model.username })
             .toArray();
 
         if (this.ModelClass.toViewModel) {
