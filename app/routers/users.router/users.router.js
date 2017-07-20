@@ -11,7 +11,7 @@ const attachTo = (app, data) => {
                 isAnonymous: true,
             },
         };
-        res.render('users/login', { context: context });
+        return res.render('users/login', { context: context });
     });
 
     app.get('/register', (req, res) => {
