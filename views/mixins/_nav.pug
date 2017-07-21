@@ -18,8 +18,6 @@ mixin nav()
                         a(href='/aboutUs') About Us
                     li(id="nav-btn-contactUs")
                         a(href='/contactUs') Contact Us
-                    //li(id="nav-btn-create-animal")
-                    //    a(href='/createAnimal') Create Animal
                     if !context.user.isAnonymous
                         li(id="nav-btn-all-animals")
                             a(href='/allAnimals') All Animals
