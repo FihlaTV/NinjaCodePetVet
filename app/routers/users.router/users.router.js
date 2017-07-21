@@ -13,7 +13,12 @@ const attachTo = (app, data) => {
     });
 
     app.get('/register', (req, res) => {
-        return res.render('users/register');
+        const context = {
+            user: {
+                isAnonymous: true,
+            },
+        };
+        return res.render('users/register', { context: context });
     });
 
     app.get('/profile', (req, res, next) => {
