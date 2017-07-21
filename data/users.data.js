@@ -23,7 +23,7 @@ class UsersData extends BaseData {
     }
 
     create(model) {
-        const username = model.username;
+        const username = model.username.toLowerCase();
         return this.collection
             .findOne({ username })
             .then((user) => {

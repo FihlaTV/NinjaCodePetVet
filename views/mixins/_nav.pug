@@ -18,8 +18,6 @@ mixin nav()
                         a(href='/aboutUs') About Us
                     li(id="nav-btn-contactUs")
                         a(href='/contactUs') Contact Us
-                    //li(id="nav-btn-create-animal")
-                    //    a(href='/createAnimal') Create Animal
                     li(id="nav-btn-all-animals")
                         a(href='/allAnimals') All Animals
                     //- li.dropdown
@@ -44,7 +42,8 @@ mixin nav()
                 //-         input.form-control(placeholder='Search', type='text')
                 //-     button.btn.btn-default(type='submit') Submit
                 ul.nav.navbar-nav.navbar-right
-                    if context.user.isAnonymous
+                    //if context.user.isAnonymous
+					if true
                         li(id="nav-btn-login")
                             a(href='/login') Log In
                         li(id="nav-btn-register")
@@ -53,6 +52,6 @@ mixin nav()
                         li(id="nav-btn-profile")
                             a(href='/profile') Hi,
                                 inline
-                                    =' ' + context.user.username
+                                    //=' ' + context.user.username
                         li(id="nav-btn-logout")
                             a(href='/logout') Log Out
