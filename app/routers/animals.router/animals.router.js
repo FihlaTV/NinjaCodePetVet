@@ -2,7 +2,7 @@ const attachTo = (app, data) => {
     const controller = require('./animals.controller').init(data);
 
     app.get('/allAnimals', (req, res, next) => {
-        if (!req.user) {
+        if (!req.isAuthenticated()) {
             return res.redirect('/login');
         }
         return next();

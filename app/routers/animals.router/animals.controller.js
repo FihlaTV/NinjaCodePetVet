@@ -3,9 +3,22 @@ const init = (data) => {
         getAll(req, res) {
             return data.animals.getAll()
                 .then((animals) => {
-                    return res.render('animals/allAnimals', {
-                        context: animals,
-                    });
+                    let user = {};
+
+                    if (req.isAuthenticated()) {
+                        user = req.user;
+                        user.isAnonymous = false;
+                    } else {
+                        user.isAnonymous = true;
+                    }
+
+                    const context = {
+                        context: {
+                            user: user,
+                            animals: animals,
+                        },
+                    };
+                    return res.render('animals/allAnimals', context);
                 });
         },
         getAnimalsByOwnerUsername(req, res) {

@@ -7,23 +7,57 @@ const attachTo = (app, data) => {
     const controller = require('./controller').init(data);
 
     app.get('/', (req, res) => {
-        controller.getUser(req)
-            .then((user) => {
-                user.isAnonymous = true;
-                return res.render('home', {
-                    context: {
-                        user: user,
-                    },
-                });
-            });
+        let user = {};
+
+        if (req.isAuthenticated()) {
+            user = req.user;
+            user.isAnonymous = false;
+        } else {
+            user.isAnonymous = true;
+        }
+
+        const context = {
+            context: {
+                user: user,
+            },
+        };
+        return res.render('home', context);
     });
 
     app.get('/aboutUs', (req, res) => {
-        return res.render('aboutUs');
+        let user = {};
+
+        if (req.isAuthenticated()) {
+            user = req.user;
+            user.isAnonymous = false;
+        } else {
+            user.isAnonymous = true;
+        }
+
+        const context = {
+            context: {
+                user: user,
+            },
+        };
+        return res.render('aboutUs', context);
     });
 
     app.get('/contactUs', (req, res) => {
-        return res.render('contactUs');
+        let user = {};
+
+        if (req.isAuthenticated()) {
+            user = req.user;
+            user.isAnonymous = false;
+        } else {
+            user.isAnonymous = true;
+        }
+
+        const context = {
+            context: {
+                user: user,
+            },
+        };
+        return res.render('contactUs', context);
     });
 
     fs.readdirSync(__dirname)

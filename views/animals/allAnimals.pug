@@ -12,7 +12,7 @@ block body
             | Search
     h4#warning(style='display:none;') The following username doesn't exist! Please try to make a different search :)
     ol.petsList
-        each pet in context
+        each pet in context.animals
             li(id = pet.id style='display:none;')
                 p
                     strong Pet Name:

@@ -1,5 +1,5 @@
 window.onload = function() {
-    $('#nav-btn-all-animals').addClass('active');
+    $('#nav-btn-profile').addClass('active');
     $('#password').hide();
 };
 
