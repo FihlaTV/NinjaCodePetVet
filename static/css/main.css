@@ -8,7 +8,7 @@
     justify-content: center;
 }
 
-#warning, .info > li {
+#warning, .info > li, .error > li {
     display: inline-block;
     font-weight: bold;
     color: #b3251b;

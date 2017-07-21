@@ -49,10 +49,6 @@ class UsersData extends BaseData {
     }
 
     updateUser(model) {
-        // if (!this._isModelValid(model)) {
-        //     return Promise.reject('Invalid model!');
-        // }
-
         this.collection.updateOne(
             { _id: new ObjectID(model._id) },
             {

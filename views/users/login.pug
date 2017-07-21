@@ -6,6 +6,7 @@ block head
    title Log In
 block body
     h1 Log In
+    != messages()
     div.jumbotron.col-lg-6
         form.form-horizontal(action="/login", method="POST")
             fieldset

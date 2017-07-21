@@ -64,7 +64,9 @@ $edit.on('click', (event) => {
         $okButton.hide();
         $editButton.show();
 
-        inlineText.text(input.val());
+        if (input.val().length >= 3) {
+            inlineText.text(input.val());
+        }
         inlineText.show();
     });
 

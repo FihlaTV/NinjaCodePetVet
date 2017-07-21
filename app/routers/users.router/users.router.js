@@ -26,8 +26,8 @@ const attachTo = (app, data) => {
             return res.redirect('/login');
         }
         return next();
-        }, (req, res) => {
-            return usersController.getUser(req, res);
+    }, (req, res) => {
+        return usersController.getUser(req, res);
     });
 
     app.put('/profile', (req, res, next) => {
@@ -35,17 +35,18 @@ const attachTo = (app, data) => {
             return res.redirect('/login');
         }
         return next();
-        }, (req, res) => {
-            const user = req.body;
-            return data.users.updateUser(user);
+    }, (req, res) => {
+        const user = req.body;
+        return data.users.updateUser(user);
     });
 
     app.post('/login',
         passport.authenticate('local', {
             failureRedirect: '/login',
+            failureFlash: true,
         }),
         (req, res) => {
-            res.redirect('\profile');
+            res.redirect('/profile');
         }
     );
 
@@ -55,15 +56,14 @@ const attachTo = (app, data) => {
     });
 
     app.post('/register', (req, res, next) => {
-        // validate registration data
-        if (!req.body.username || req.body.username.length < 3) {
-            req.flash('info', 'Username must be at least 3 characters long!');
-            res.redirect('/register');
+        if (!req.body.username || req.body.username.length < 6) {
+            req.flash('info', 'Username must be at least 6 characters long!');
+            return res.redirect('/register');
         }
 
         if (!req.body.password || req.body.password.length < 6) {
             req.flash('info', 'Password must be at least 6 characters long!');
-            res.redirect('/register');
+            return res.redirect('/register');
         }
 
         const user = req.body;

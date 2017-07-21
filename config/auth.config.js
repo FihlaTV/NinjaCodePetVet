@@ -11,13 +11,14 @@ const passportConfig = require('./passport.config');
 const init = (app, data) => {
     app.use(cookieParser());
     app.use(session({
-        secret: 'Pet Vet',
         store: new MongoStore({
             url: config.connectionString,
             autoRemove: 'native', // Default
-            }),
-        }));
-    // app.use(session({ secret: 'Pet Vet' }));
+        }),
+        secret: 'Pet Vet',
+        resave: true,
+        saveUninitialized: true,
+    }));
     app.use(passport.initialize());
     app.use(passport.session());
 

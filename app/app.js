@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const session = require('express-session');
 const flash = require('connect-flash');
 const messages = require('express-messages');
 
@@ -15,7 +14,6 @@ const init = (data) => {
     app.use('/libs', express.static('./node_modules'));
     app.use('/static', express.static('./static'));
     app.use(cookieParser('keyboard cat'));
-    app.use(session({ cookie: { maxAge: 60000 } }));
     app.use(flash());
 
     app.use((req, res, next) => {

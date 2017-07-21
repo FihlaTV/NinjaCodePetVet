@@ -21,27 +21,6 @@ mixin nav()
                     if !context.user.isAnonymous
                         li(id="nav-btn-all-animals")
                             a(href='/allAnimals') All Animals
-                    //- li.dropdown
-                    //-     a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
-                    //-         | Dropdown
-                    //-         span.caret
-                    //-     ul.dropdown-menu(role='menu')
-                    //-         li
-                    //-             a(href='#') Action
-                    //-         li
-                    //-             a(href='#') Another action
-                    //-         li
-                    //-             a(href='#') Something else here
-                    //-         li.divider
-                    //-         li
-                    //-             a(href='#') Separated link
-                    //-         li.divider
-                    //-         li
-                    //-             a(href='#') One more separated link
-                //- form.navbar-form.navbar-left(role='search')
-                //-     div.form-group
-                //-         input.form-control(placeholder='Search', type='text')
-                //-     button.btn.btn-default(type='submit') Submit
                 ul.nav.navbar-nav.navbar-right
                     if context.user.isAnonymous
                         li(id="nav-btn-login")

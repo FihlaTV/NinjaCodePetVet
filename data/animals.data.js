@@ -1,6 +1,6 @@
 const BaseData = require('./base/base.data');
 const Animal = require('../models/animal.model');
-const objectId = require('mongodb').ObjectID;
+const ObjectID = require('mongodb').ObjectID;
 
 class AnimalsData extends BaseData {
     constructor(db) {
@@ -24,7 +24,7 @@ class AnimalsData extends BaseData {
 
     updateAnimal(model) {
         this.collection.updateOne(
-            { _id: objectId(model._id) },
+            { _id: new ObjectID(model._id) },
             {
                 $set: {
                     ownerAddress: model.ownerAddress,
@@ -32,8 +32,8 @@ class AnimalsData extends BaseData {
                     checkUp: model.checkUp,
                 },
             }).catch((err) => {
-                return err;
-            });
+            return err;
+        });
     }
 }
 

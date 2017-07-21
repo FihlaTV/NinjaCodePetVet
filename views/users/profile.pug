@@ -6,6 +6,7 @@ block head
 block body
     div.row
         h1= context.user.username + '\'s profile'
+        != messages()
         div#wrapper.jumbotron.col-lg-10
             button.btn.btn-default(type='button', data-toggle='collapse', data-target='#collapseMenuFirst', aria-expanded='false', aria-controls='collapseExample')
                 | Profile's Information
@@ -95,6 +96,7 @@ block body
                         th Kind
                         th Breed
                         th Birth date
+                        th Check-up
                 tbody
                     each pet in context.animals
                         tr
@@ -102,4 +104,5 @@ block body
                             td= pet.type
                             td= pet.breed
                             td= pet.birthDate
+                            td= pet.checkUp
     script(src="/static/js/controllers/profile.controller.js")
