@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 
 const attachTo = (app, data) => {
-    const controller = require('./controller').init(data);
+    // const controller = require('./controller').init(data);
 
     app.get('/', (req, res) => {
         let user = {};
