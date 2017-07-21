@@ -60,9 +60,20 @@ const attachTo = (app, data) => {
             req.flash('info', 'Username must be at least 6 characters long!');
             return res.redirect('/register');
         }
-
         if (!req.body.password || req.body.password.length < 6) {
             req.flash('info', 'Password must be at least 6 characters long!');
+            return res.redirect('/register');
+        }
+        if (!req.body.email || req.body.email.length < 10) {
+            req.flash('info', 'Email must be at least 10 characters long!');
+            return res.redirect('/register');
+        }
+        if (!req.body.phone || req.body.phone.length < 10) {
+            req.flash('info', 'Phone must be at least 10 characters long!');
+            return res.redirect('/register');
+        }
+        if (!req.body.address || req.body.address.length < 10) {
+            req.flash('info', 'Address must be at least 10 characters long!');
             return res.redirect('/register');
         }
 
