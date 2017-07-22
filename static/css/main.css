@@ -46,7 +46,7 @@
     padding-bottom: 30px;
 }
 
-.edit, .ok {
+.edit, .ok, .day {
     cursor: pointer;
 }
 

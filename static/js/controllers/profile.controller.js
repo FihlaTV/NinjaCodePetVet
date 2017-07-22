@@ -3,6 +3,12 @@ window.onload = function() {
     $('#password').hide();
 };
 
+$(() =>{
+    $('.datepicker').datepicker({
+        format: 'dd-mm-yyyy'
+    });
+});
+
 let $edit = $('.edit');
 $edit.on('click', (event) => {
     let $editButton = $(event.target);

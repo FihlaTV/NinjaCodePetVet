@@ -2,6 +2,7 @@ extends ../_master
 
 block scripts
     script(src="libs/bootstrap-3-typeahead/bootstrap3-typeahead.js")
+    script(src="/libs/bootstrap-datepicker/js/bootstrap-datepicker.js")
 block head
     title All Animals Page
 block body
@@ -52,7 +53,7 @@ block body
                     strong Pet Check Up:
                     inline
                         =pet.checkUp
-                    input(name="checkUp" style='display:none;')
+                    input.datepicker(name="checkUp" style='display:none;')
                     img.edit(src='/static/img/icons/edit.png', style='width:15px')
                     img.ok(src='/static/img/icons/ok.png', style='display:none; width:17px')
                 button.btn.btn-default(style='display:none;')

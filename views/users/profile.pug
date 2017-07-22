@@ -1,6 +1,7 @@
 extends ../_master
 
 block scripts
+    script(src="/libs/bootstrap-datepicker/js/bootstrap-datepicker.js")
 block head
     title Profile
 block body
@@ -12,7 +13,6 @@ block body
                 | Profile's Information
             button.btn.btn-default(type='button', data-toggle='collapse', data-target='#collapseMenuSecond', aria-expanded='false', aria-controls='collapseExample')
                 | Add Your Pet
-
         div#collapseMenuFirst.collapse
             .card.card-block
                 div.jumbotron.col-lg-10
@@ -68,7 +68,7 @@ block body
                             section.form-group
                                 label.col-lg-2.control-label(for='inputPetBirthDate') Pet Birth Date
                                 div.col-lg-10
-                                    input#inputPetBirthDate.form-control(placeholder='Pet birth date', name='birthDate', autocomplete='off', type='text', required)
+                                    input#inputPetBirthDate.form-control.datepicker(name='birthDate', autocomplete='off', type='text', required)
                             section.form-group(style='display:none;')
                                 div.col-lg-10
                                     input.form-control(name='ownerId', type='text', value=context.user._id)

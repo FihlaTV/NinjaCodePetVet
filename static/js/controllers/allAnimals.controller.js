@@ -3,6 +3,10 @@ window.onload = function() {
 };
 
 $(() => {
+    $('.datepicker').datepicker({
+        format: 'dd-mm-yyyy'
+    });
+
     let input = $('#searchField');
     let searchBtn = $('#searchBtn');
     let users = $('.username');
