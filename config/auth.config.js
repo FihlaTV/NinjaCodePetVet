@@ -1,9 +1,6 @@
-/* globals User */
-
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-// const mongoDb = require('mongodb').MongoClient;
 const MongoStore = require('connect-mongo')(session);
 const config = require('./app.config');
 const passportConfig = require('./passport.config');
