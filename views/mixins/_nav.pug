@@ -18,7 +18,7 @@ mixin nav()
                         a(href='/aboutUs') About Us
                     li(id="nav-btn-contactUs")
                         a(href='/contactUs') Contact Us
-                    if !context.user.isAnonymous
+                    if context.user.isAdmin === 'true'
                         li(id="nav-btn-all-animals")
                             a(href='/allAnimals') All Animals
                 ul.nav.navbar-nav.navbar-right

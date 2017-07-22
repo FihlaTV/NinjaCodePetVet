@@ -5,6 +5,9 @@ const attachTo = (app, data) => {
         if (!req.isAuthenticated()) {
             return res.redirect('/login');
         }
+        if (req.user.isAdmin === 'false') {
+            return res.redirect('/notFound');
+        }
         return next();
     }, (req, res) => {
         return controller.getAll(req, res);
@@ -27,19 +30,23 @@ const attachTo = (app, data) => {
         }
         return next();
     }, (req, res) => {
-        if (!req.body.name.trim() || req.body.name.trim().length < 1) {
+        if (!req.body.name.trim() ||
+            req.body.name.trim().length < 1) {
             req.flash('info', 'Pet name must be entered!');
             return res.redirect('/profile');
         }
-        if (!req.body.type.trim() || req.body.type.trim().length < 1) {
+        if (!req.body.type.trim() ||
+            req.body.type.trim().length < 1) {
             req.flash('info', 'Pet kind must be entered!');
             return res.redirect('/profile');
         }
-        if (!req.body.breed.trim() || req.body.breed.trim().length < 1) {
+        if (!req.body.breed.trim() ||
+            req.body.breed.trim().length < 1) {
             req.flash('info', 'Pet breed must be entered!');
             return res.redirect('/profile');
         }
-        if (!req.body.birthDate.trim() || req.body.birthDate.trim().length < 10) {
+        if (!req.body.birthDate.trim() ||
+            req.body.birthDate.trim().length < 10) {
             req.flash('info',
                 'Pet birth date must be entered!');
             return res.redirect('/profile');

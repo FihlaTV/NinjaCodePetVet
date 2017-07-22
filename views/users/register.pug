@@ -3,7 +3,7 @@ extends ../_master
 block scripts
 
 block head
-   title Register
+    title Register
 block body
     h1 Register
     != messages()
@@ -32,6 +32,10 @@ block body
                         input#inputAddress.form-control(placeholder="Address" name="address" autocomplete="off" type="address")
                         span.help-block
                             | We need your address in case of home visits.
+                section.form-group(style='display:none;')
+                    label.col-lg-2.control-label
+                    div.col-lg-10
+                        input.form-control(name='isAdmin', type='text', value='false')
                 section.form-group
                     label.col-lg-2.control-label Gender
                     div.col-lg-10
@@ -44,21 +48,7 @@ block body
                                 input#optionsRadios2(name='gender', value='female', type='radio')
                                 | Female
                 section.form-group
-                    //label.col-lg-2.control-label(for='select') Pets
                     div.col-lg-10
-                        //select#select.form-control
-                        //    option 1
-                        //    option 2
-                        //    option 3
-                        //    option 4
-                        //    option 5
-                        //- br
-                        //- select.form-control(multiple='')
-                        //-     option 1
-                        //-     option 2
-                        //-     option 3
-                        //-     option 4
-                        //-     option 5
                         div.checkbox(align="center")
                             label
                                 input(type='checkbox', name="acceptPolicy", required)
