@@ -31,8 +31,8 @@ const attachTo = (app, data) => {
             req.flash('info', 'Pet name must be at least 5 characters long!');
             return res.redirect('/profile');
         }
-        if (!req.body.type || req.body.type.length < 5) {
-            req.flash('info', 'Pet kind must be at least 5 characters long!');
+        if (!req.body.type || req.body.type.length < 3) {
+            req.flash('info', 'Pet kind must be at least 3 characters long!');
             return res.redirect('/profile');
         }
         if (!req.body.breed || req.body.breed.length < 5) {

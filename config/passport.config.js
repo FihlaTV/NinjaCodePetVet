@@ -26,12 +26,12 @@ const passportConfig = (app, data) => {
                 .then( (user) => {
                     if (!user) {
                         return done(null, false,
-                            { message: 'Incorrect username!' });
+                            { message: 'Incorrect username or password!' });
                     }
 
                     if (user.password !== password) {
                         return done(null, false,
-                            { message: 'Incorrect password!' });
+                            { message: 'Incorrect username or password!' });
                     }
 
                     return done(null, user);
