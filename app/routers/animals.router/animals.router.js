@@ -27,21 +27,21 @@ const attachTo = (app, data) => {
         }
         return next();
     }, (req, res) => {
-        if (!req.body.name || req.body.name.length < 1) {
-            req.flash('info', 'Pet name must be at least 5 characters long!');
+        if (!req.body.name.trim() || req.body.name.trim().length < 1) {
+            req.flash('info', 'Pet name must be entered!');
             return res.redirect('/profile');
         }
-        if (!req.body.type || req.body.type.length < 1) {
-            req.flash('info', 'Pet kind must be at least 3 characters long!');
+        if (!req.body.type.trim() || req.body.type.trim().length < 1) {
+            req.flash('info', 'Pet kind must be entered!');
             return res.redirect('/profile');
         }
-        if (!req.body.breed || req.body.breed.length < 1) {
-            req.flash('info', 'Pet breed must be at least 5 characters long!');
+        if (!req.body.breed.trim() || req.body.breed.trim().length < 1) {
+            req.flash('info', 'Pet breed must be entered!');
             return res.redirect('/profile');
         }
-        if (!req.body.birthDate || req.body.birthDate.length < 10) {
+        if (!req.body.birthDate.trim() || req.body.birthDate.trim().length < 10) {
             req.flash('info',
-                'Pet birth date must be at least 10 characters long!');
+                'Pet birth date must be entered!');
             return res.redirect('/profile');
         }
         const animal = req.body;
