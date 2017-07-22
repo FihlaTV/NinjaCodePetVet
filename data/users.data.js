@@ -34,10 +34,9 @@ class UsersData extends BaseData {
             });
     }
 
-
     findByUsername(username) {
-        const usernameToLower = username.toLowerCase();
-        return this.collection.findOne({ username: usernameToLower });
+        const regex = new RegExp(username, 'i');
+        return this.collection.findOne({ username: regex });
     }
 
     findById(userId) {
