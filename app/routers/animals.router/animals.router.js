@@ -27,15 +27,15 @@ const attachTo = (app, data) => {
         }
         return next();
     }, (req, res) => {
-        if (!req.body.name || req.body.name.length < 5) {
+        if (!req.body.name || req.body.name.length < 1) {
             req.flash('info', 'Pet name must be at least 5 characters long!');
             return res.redirect('/profile');
         }
-        if (!req.body.type || req.body.type.length < 3) {
+        if (!req.body.type || req.body.type.length < 1) {
             req.flash('info', 'Pet kind must be at least 3 characters long!');
             return res.redirect('/profile');
         }
-        if (!req.body.breed || req.body.breed.length < 5) {
+        if (!req.body.breed || req.body.breed.length < 1) {
             req.flash('info', 'Pet breed must be at least 5 characters long!');
             return res.redirect('/profile');
         }
