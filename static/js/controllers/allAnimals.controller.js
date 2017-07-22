@@ -20,6 +20,7 @@ $(() => {
     usernames = [...new Set(usernames)];
     input.typeahead({ source: usernames, showHintOnFocus: true, items: 'all' });
     let warning = $('#warning');
+    let spacing = $('.spacing');
 
     searchBtn.on('click', () => {
         let inputValue = $('#searchField').val();
@@ -27,11 +28,12 @@ $(() => {
         let isFound = false;
         petsList.hide();
         warning.hide();
-        $('.spacing').show();
+        spacing.show();
 
         for (let i = 0; i < petsList.length; i += 1) {
             let username = petsList[i].childNodes[4].innerText.split(':')[1];
             if (inputValue.length === 0) {
+                spacing.hide();
                 break;
             }
             else if (inputValue === username) {
@@ -40,6 +42,7 @@ $(() => {
             }
             else if (i === petsList.length - 1 && !isFound) {
                 warning.show();
+                spacing.hide();
             }
         }
     })

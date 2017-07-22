@@ -68,7 +68,7 @@ block body
                             section.form-group
                                 label.col-lg-2.control-label(for='inputPetBirthDate') Pet Birth Date
                                 div.col-lg-10
-                                    input#inputPetBirthDate.form-control.datepicker(name='birthDate', autocomplete='off', type='text', required)
+                                    input#inputPetBirthDate.form-control.datepicker(name='birthDate', placeholder='Pet birth date' autocomplete='off', type='text', required)
                             section.form-group(style='display:none;')
                                 div.col-lg-10
                                     input.form-control(name='ownerId', type='text', value=context.user._id)
