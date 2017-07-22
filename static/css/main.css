@@ -43,7 +43,11 @@
 
 .petsList > li {
     display: block;
-    padding-bottom: 30px;
+}
+
+.spacing {
+    display: block;
+    border-top: 5px solid darkgrey;
 }
 
 .edit, .ok, .day {

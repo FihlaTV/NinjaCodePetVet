@@ -27,6 +27,7 @@ $(() => {
         let isFound = false;
         petsList.hide();
         warning.hide();
+        $('.spacing').show();
 
         for (let i = 0; i < petsList.length; i += 1) {
             let username = petsList[i].childNodes[4].innerText.split(':')[1];
