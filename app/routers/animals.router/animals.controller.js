@@ -21,8 +21,8 @@ const init = (data) => {
                     return res.render('animals/allAnimals', context);
                 });
         },
-        getAnimalsByOwnerUsername(req, res) {
-            return data.animals.getAnimalsByOwnerUsername(req.body);
+        getAnimalsByOwnerUsername(username) {
+            return data.animals.getAnimalsByOwnerUsername(username);
         },
     };
 

@@ -7,7 +7,7 @@ const init = (data) => {
             return data.users.findById(req.user._id)
                 .then((user) => {
                     user.isAnonymous = false;
-                    return animalsController.getAnimalsByOwnerUsername(req, res)
+                    return animalsController.getAnimalsByOwnerUsername(user.username)
                         .then((animals) => {
                             return res.render('users/profile', {
                                 context: {
