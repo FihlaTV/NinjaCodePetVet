@@ -5,10 +5,11 @@
   "main": "",
   "scripts": {
     "start": "",
+    "test": "./node_modules/.bin/gulp tests:unit",
     "dev": "./node_modules/.bin/gulp dev",
     "release": "./node_modules/.bin/gulp server",
-    "test": "./node_modules/.bin/eslint .",
-    "fix": "./node_modules/.bin/eslint --fix ."
+    "eslint": "./node_modules/.bin/eslint .",
+    "eslint-fix": "./node_modules/.bin/eslint --fix ."
   },
   "repository": {
     "type": "git",
@@ -32,7 +33,6 @@
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "pug": "^2.0.0-rc.2",
-    "supertest": "^3.0.0",
     "typings": "^2.1.1"
   },
   "devDependencies": {
@@ -47,6 +47,7 @@
     "istanbul": "^0.4.5",
     "mocha": "^3.4.2",
     "selenium-webdriver": "^3.4.0",
-    "sinon": "^2.3.6"
+    "sinon": "^2.3.6",
+    "supertest": "^3.0.0"
   }
 }
