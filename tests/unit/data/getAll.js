@@ -6,8 +6,8 @@ describe('BaseData.getAll()', () => {
     const db = {
         collection: () => { },
     };
-    let items = [];
 
+    let items = [];
     let ModelClass = null;
     const validator = null;
     let data = null;
