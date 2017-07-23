@@ -68,7 +68,21 @@ const attachTo = (app, data) => {
         });
 
     app.get('*', (req, res) => {
-        return res.render('notFound');
+        let user = {};
+
+        if (req.isAuthenticated()) {
+            user = req.user;
+            user.isAnonymous = false;
+        } else {
+            user.isAnonymous = true;
+        }
+
+        const context = {
+            context: {
+                user: user,
+            },
+        };
+        return res.render('notFound', context);
     });
 };
 
