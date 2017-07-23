@@ -28,7 +28,6 @@ $(() => {
         let isFound = false;
         petsList.hide();
         warning.hide();
-        spacing.show();
 
         for (let i = 0; i < petsList.length; i += 1) {
             let username = petsList[i].childNodes[4].innerText.split(':')[1];
@@ -39,6 +38,7 @@ $(() => {
             else if (inputValue === username) {
                 petsList[i].style.display = "block";
                 isFound = true;
+                spacing.show();
             }
             else if (i === petsList.length - 1 && !isFound) {
                 warning.show();
