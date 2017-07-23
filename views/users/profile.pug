@@ -9,9 +9,9 @@ block body
         h1= context.user.username + '\'s profile'
         != messages()
         div#wrapper.jumbotron.col-lg-10
-            button.btn.btn-default(type='button', data-toggle='collapse', data-target='#collapseMenuFirst', aria-expanded='false', aria-controls='collapseExample')
+            button.btn.btn-default(id='btn-info', type='button', data-toggle='collapse', data-target='#collapseMenuFirst', aria-expanded='false', aria-controls='collapseExample')
                 | Profile's Information
-            button.btn.btn-default(type='button', data-toggle='collapse', data-target='#collapseMenuSecond', aria-expanded='false', aria-controls='collapseExample')
+            button.btn.btn-default(id='btn-add-pet', type='button', data-toggle='collapse', data-target='#collapseMenuSecond', aria-expanded='false', aria-controls='collapseExample')
                 | Add Your Pet
         div#collapseMenuFirst.collapse
             .card.card-block

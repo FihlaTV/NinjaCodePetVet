@@ -37,8 +37,8 @@ gulp.task('test-server:start', () => {
         .then((data) => require('./app').init(data))
         .then((app) => {
             app.listen(
-                config.port,
-                () => console.log(`Magic happends at :${config.port}`));
+                testConfig.port,
+                () => console.log(`Magic happends at :${testConfig.port}`));
         });
 });
 
@@ -75,14 +75,14 @@ gulp.task('tests:unit', ['pre-test'], () => {
         .pipe(istanbul.writeReports());
 });
 
-gulp.task('tests:browser', ['test-server-start'], () => {
-    return gulp.src('./tests/browser/items/create-item.js')
+gulp.task('tests:browser', ['test-server:start'], () => {
+    return gulp.src('./tests/browser/**/*.js')
         .pipe(mocha({
             reporter: 'nyan',
             timeout: 10000,
         }))
         .once('end', () => {
-            gulp.start('test-server-stop');
+            gulp.start('test-server:stop');
         });
 });
 
