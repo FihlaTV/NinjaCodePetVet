@@ -24,7 +24,7 @@ describe('Items routes', () => {
         return driver.quit();
     });
 
-    it.skip('expect h1 with text "Welcome"', (done) => {
+    it('expect h1 with text "Welcome"', (done) => {
         driver.get(appUrl)
             .then(() => {
                 return driver.findElement(
@@ -40,7 +40,7 @@ describe('Items routes', () => {
             });
     });
 
-    it.skip('expect h1 with text "Welcome"', (done) => {
+    it('expect h1 with text "Welcome"', (done) => {
         driver.get(appUrl)
             .then(() => {
                 return driver.findElement(
