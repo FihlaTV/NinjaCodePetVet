@@ -9,7 +9,7 @@ block body
     script(src="/static/js/petsCare.js")
 
     div#wrapper.jumbotron.col-lg-10
-        button.btn.btn-default(id='btn-general', type='button', data-toggle='collapse', data-target='#collapseMenuDog', aria-expanded='false', aria-controls='collapseExample')
+        button.btn.btn-default(id='btn-general', type='button', data-toggle='collapse', data-target='#collapseMenuGeneral', aria-expanded='false', aria-controls='collapseExample')
             | General Pet Care
         button.btn.btn-default(id='btn-dog', type='button', data-toggle='collapse', data-target='#collapseMenuDog', aria-expanded='false', aria-controls='collapseExample')
             | Dog
@@ -22,7 +22,7 @@ block body
         button.btn.btn-default(id='btn-tortoise', type='button', data-toggle='collapse', data-target='#collapseMenuTortoise', aria-expanded='false', aria-controls='collapseExample')
             | Tortoise
 
-    div#collapseMenuDog.collapse
+    div#collapseMenuGeneral.collapse
         .card.card-block
             div.jumbotron.col-lg-10
                 fieldset
