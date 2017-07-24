@@ -18,6 +18,9 @@ mixin nav()
                         a(href='/aboutUs') About Us
                     li(id="nav-btn-contactUs")
                         a(href='/contactUs') Contact Us
+                    if !context.user.isAnonymous
+                        li(id="nav-btn-petsCare")
+                            a(href='/petsCare') Pets Care
                     if context.user.isAdmin === 'true'
                         li(id="nav-btn-all-animals")
                             a(href='/allAnimals') All Animals

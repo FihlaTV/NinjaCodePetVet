@@ -56,23 +56,28 @@ const attachTo = (app, data) => {
     });
 
     app.post('/register', (req, res, next) => {
-        if (!req.body.username || req.body.username.length < 6) {
+        if (!req.body.username.trim() ||
+            req.body.username.trim().length < 6) {
             req.flash('info', 'Username must be at least 6 characters long!');
             return res.redirect('/register');
         }
-        if (!req.body.password || req.body.password.length < 6) {
+        if (!req.body.password.trim() ||
+            req.body.password.trim().length < 6) {
             req.flash('info', 'Password must be at least 6 characters long!');
             return res.redirect('/register');
         }
-        if (!req.body.email || req.body.email.length < 10) {
+        if (!req.body.email.trim() ||
+            req.body.email.trim().length < 10) {
             req.flash('info', 'Email must be at least 10 characters long!');
             return res.redirect('/register');
         }
-        if (!req.body.phone || req.body.phone.length < 10) {
+        if (!req.body.phone.trim() ||
+            req.body.phone.trim().length < 10) {
             req.flash('info', 'Phone must be at least 10 characters long!');
             return res.redirect('/register');
         }
-        if (!req.body.address || req.body.address.length < 10) {
+        if (!req.body.address.trim() ||
+            req.body.address.trim().length < 10) {
             req.flash('info', 'Address must be at least 10 characters long!');
             return res.redirect('/register');
         }

@@ -22,10 +22,7 @@ const init = (data) => {
     });
 
     require('../config/auth.config').init(app, data);
-    // delete below middleware
     app.use((req, res, next) => {
-       /* console.log('-- Current user --');
-        console.log(req.user);*/
         next();
     });
 

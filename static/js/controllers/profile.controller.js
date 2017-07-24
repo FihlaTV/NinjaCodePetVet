@@ -39,8 +39,8 @@ $edit.on('click', (event) => {
         $okButton.hide();
         $editButton.show();
 
-        if (input.val().length >= 3) {
-            inlineText.text(input.val());
+        if (input.val().trim().length >= 3) {
+            inlineText.text(input.val().trim());
         }
         inlineText.show();
         password.hide();

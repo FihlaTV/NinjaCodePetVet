@@ -13,6 +13,30 @@ const attachTo = (app, data) => {
         return controller.getAll(req, res);
     });
 
+    app.get('/petsCare', (req, res, next) => {
+        if (!req.isAuthenticated()) {
+            return res.redirect('/login');
+        }
+        return next();
+    }, (req, res) => {
+        let user = {};
+
+        if (req.isAuthenticated()) {
+            user = req.user;
+            user.isAnonymous = false;
+        } else {
+            user.isAnonymous = true;
+        }
+
+        const context = {
+            context: {
+                user: user,
+            },
+        };
+
+        return res.render('animals/petsCare', context);
+    });
+
     app.put('/animals', (req, res, next) => {
         if (!req.isAuthenticated()) {
             return res.redirect('/login');
@@ -20,7 +44,6 @@ const attachTo = (app, data) => {
         return next();
     }, (req, res) => {
         const animal = req.body;
-        // validate item
         return data.animals.updateAnimal(animal);
     });
 
@@ -52,13 +75,11 @@ const attachTo = (app, data) => {
             return res.redirect('/profile');
         }
         const animal = req.body;
-        // validate item
         return data.animals.create(animal)
             .then((dbAnimal) => {
                 return res.redirect('/profile');
             })
             .catch((err) => {
-                // connect-flash
                 req.flash('error', err);
                 return res.redirect('/profile');
             });
