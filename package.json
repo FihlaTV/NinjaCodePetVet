@@ -5,6 +5,7 @@
   "main": "",
   "scripts": {
     "start": "",
+    "selenium": "selenium-standalone start",
     "unit-test": "./node_modules/.bin/gulp tests:unit",
     "browser-test": "./node_modules/.bin/gulp tests:browser",
     "release": "./node_modules/.bin/gulp server",

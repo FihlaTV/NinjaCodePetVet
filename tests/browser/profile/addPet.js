@@ -16,7 +16,7 @@ describe('Items routes', () => {
 
     const appUrl = 'http://localhost:3002';
 
-    beforeEach(() => {
+     beforeEach(() => {
         driver = setupDriver('chrome');
         ui.setDriver(driver);
         return driver.get(appUrl);

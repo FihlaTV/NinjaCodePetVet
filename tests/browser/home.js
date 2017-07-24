@@ -13,9 +13,9 @@ describe('Items routes', () => {
 
     const appUrl = 'http://localhost:3002';
 
-    beforeEach(() => {
+    /* beforeEach(() => {
         driver = setupDriver('chrome');
-    });
+    });*/
 
     it('expect h1 with text "Welcome"', (done) => {
         driver.get(appUrl)
