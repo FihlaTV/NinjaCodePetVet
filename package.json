@@ -5,9 +5,10 @@
   "main": "",
   "scripts": {
     "start": "",
-    "test": "./node_modules/.bin/gulp tests:unit",
-    "dev": "./node_modules/.bin/gulp dev",
+    "unit-test": "./node_modules/.bin/gulp tests:unit",
+    "browser-test": "./node_modules/.bin/gulp tests:browser",
     "release": "./node_modules/.bin/gulp server",
+    "dev": "./node_modules/.bin/gulp dev",
     "eslint": "./node_modules/.bin/eslint .",
     "eslint-fix": "./node_modules/.bin/eslint --fix ."
   },

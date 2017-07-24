@@ -38,7 +38,7 @@ gulp.task('test-server:start', () => {
         .then((app) => {
             app.listen(
                 testConfig.port,
-                () => console.log(`Magic happends at :${testConfig.port}`));
+                () => console.log(`Tests works on port: ${testConfig.port}`));
         });
 });
 
