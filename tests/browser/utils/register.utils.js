@@ -5,7 +5,7 @@ const async = require('../../../common/async');
 
 const register = (username, email, pass, phone, address) => {
     return async()
-        .then(() => ui.click('#nav-btn-regeister'))
+        .then(() => ui.click('#nav-btn-register'))
         .then(() => ui.setValue('input[name="username"]', username))
         .then(() => ui.setValue('input[name="email"]', email))
         .then(() => ui.setValue('input[name="password"]', pass))
