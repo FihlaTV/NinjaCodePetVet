@@ -41,11 +41,12 @@ describe('Items routes', () => {
             loginUtils.login(username, pass);
         });
 
-        it('expect a button for adding a pet to be visible in /profile', () => {
+        it('expect a button for adding a pet to be visible in /profile', (done) => {
             return async()
                 .then(() => ui.waitFor('#btn-add-pet'))
                 .then((btn) => {
                     expect(btn.value()).to.contain('Add');
+                    done();
                 });
         });
     });

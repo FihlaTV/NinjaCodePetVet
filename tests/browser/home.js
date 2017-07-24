@@ -2,6 +2,7 @@
 const { expect } = require('chai');
 const { setupDriver } = require('./utils/setup-driver');
 const webdriver = require('selenium-webdriver');
+const ui = require('../browser/utils/ui');
 
 
 describe('Items routes', () => {
@@ -13,9 +14,15 @@ describe('Items routes', () => {
 
     const appUrl = 'http://localhost:3002';
 
-    /* beforeEach(() => {
+    beforeEach(() => {
         driver = setupDriver('chrome');
-    });*/
+        ui.setDriver(driver);
+        return driver.get(appUrl);
+    });
+
+    afterEach(() => {
+        return driver.quit();
+    });
 
     it('expect h1 with text "Welcome"', (done) => {
         driver.get(appUrl)
