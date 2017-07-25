@@ -1,8 +1,14 @@
 const request = require('supertest');
 
-describe('/animals tests', () => {
+describe('/users tests', () => {
     const connectionString = 'mongodb://localhost/PetVetDb-test';
     let app = null;
+
+    after(() => {
+        return Promise.resolve()
+            .then(() => require('../../db').init(connectionString))
+            .then((db) => db.dropDatabase());
+    });
 
     beforeEach(() => {
         return Promise.resolve()
@@ -14,13 +20,89 @@ describe('/animals tests', () => {
             });
     });
 
-    /* describe('POST /register', () => {
+    describe('GET /login', () => {
+        it('expect to return 200 (OK)', (done) => {
+            request(app)
+                .get('/login')
+                .expect(200)
+                .end((err, res) => {
+                    if (err) {
+                        return done(err);
+                    }
+
+                    return done();
+                });
+        });
+    });
+
+    describe('GET /register', () => {
+        it('expect to return 200 (OK)', (done) => {
+            request(app)
+                .get('/register')
+                .expect(200)
+                .end((err, res) => {
+                    if (err) {
+                        return done(err);
+                    }
+
+                    return done();
+                });
+        });
+    });
+
+    describe('GET /profile', () => {
+        it('expect to return 302 (Found)', (done) => {
+            request(app)
+                .get('/profile')
+                .expect(302)
+                .end((err, res) => {
+                    if (err) {
+                        return done(err);
+                    }
+
+                    return done();
+                });
+        });
+    });
+
+    describe('PUT /profile', () => {
+        it('expect to return 302 (Found)', (done) => {
+            request(app)
+                .put('/profile')
+                .expect(302)
+                .end((err, res) => {
+                    if (err) {
+                        return done(err);
+                    }
+
+                    return done();
+                });
+        });
+    });
+
+    describe('GET /logout', () => {
+        it('expect to return 302 (Found)', (done) => {
+            request(app)
+                .get('/logout')
+                .expect(302)
+                .expect('Location', '/')
+                .end((err, res) => {
+                    if (err) {
+                        return done(err);
+                    }
+
+                    return done();
+                });
+        });
+    });
+
+    describe('POST /register', () => {
         it('expect to return 200 (OK)', (done) => {
             request(app)
                 .post('/register')
                 .send({
-                    username: 'pesho',
-                    email: 'pesho@mail.bg',
+                    username: 'gosho',
+                    email: 'gosho@mail.bg',
                     password: 'password',
                     phone: '1234567890',
                     address: 'mladost,al.malinov',
@@ -33,6 +115,7 @@ describe('/animals tests', () => {
                     if (err) {
                         return done(err);
                     }
+
                     return done();
                 });
         });
@@ -42,68 +125,9 @@ describe('/animals tests', () => {
         it('expect to return 302 (Found)', (done) => {
             request(app)
                 .post('/login')
-                .send({ username: 'pesho', password: 'password' })
+                .send({ username: 'gosho', password: 'password' })
                 .expect(302)
                 .expect('Location', '/profile')
-                .end((err, res) => {
-                    if (err) {
-                        return done(err);
-                    }
-                    return done();
-                });
-        });
-    });*/
-
-    describe('GET /allAnimals', () => {
-        it('expect to return 302 (Found)', (done) => {
-            request(app)
-                .get('/allAnimals')
-                .expect(302)
-                .end((err, res) => {
-                    if (err) {
-                        return done(err);
-                    }
-
-                    return done();
-                });
-        });
-    });
-
-    describe('GET /petsCare', () => {
-        it('expect to return 302 (Found)', (done) => {
-            request(app)
-                .get('/petsCare')
-                .expect(302)
-                .end((err, res) => {
-                    if (err) {
-                        return done(err);
-                    }
-
-                    return done();
-                });
-        });
-    });
-
-    describe('PUT /animals', () => {
-        it('expect to return 302 (Found)', (done) => {
-            request(app)
-                .put('/animals')
-                .expect(302)
-                .end((err, res) => {
-                    if (err) {
-                        return done(err);
-                    }
-
-                    return done();
-                });
-        });
-    });
-
-    describe('POST /animals', () => {
-        it('expect to return 302 (Found)', (done) => {
-            request(app)
-                .post('/animals')
-                .expect(302)
                 .end((err, res) => {
                     if (err) {
                         return done(err);

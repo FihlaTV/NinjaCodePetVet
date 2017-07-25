@@ -40,7 +40,7 @@ describe('Items routes', () => {
             });
     });
 
-    it('expect h1 with text "Welcome"', (done) => {
+  /*  it('expect h1 with text "Welcome"', (done) => {
         driver.get(appUrl)
             .then(() => {
                 return driver.findElement(
@@ -54,5 +54,5 @@ describe('Items routes', () => {
                 expect(text).to.contain('Welcome');
                 done();
             });
-    });
+    });*/
 });
