@@ -57,13 +57,13 @@ const attachTo = (app, data) => {
 
     app.post('/register', (req, res, next) => {
         if (!req.body.username.trim() ||
-            req.body.username.trim().length < 6) {
-            req.flash('info', 'Username must be at least 6 characters long!');
+            req.body.username.trim().length < 5) {
+            req.flash('info', 'Username must be at least 5 characters long!');
             return res.redirect('/register');
         }
         if (!req.body.password.trim() ||
-            req.body.password.trim().length < 6) {
-            req.flash('info', 'Password must be at least 6 characters long!');
+            req.body.password.trim().length < 5) {
+            req.flash('info', 'Password must be at least 5 characters long!');
             return res.redirect('/register');
         }
         if (!req.body.email.trim() ||
