@@ -63,7 +63,7 @@ const attachTo = (app, data) => {
         }
         if (!req.body.password.trim() ||
             req.body.password.trim().length < 5) {
-            req.flash('info', 'Password must be at least  characters long!');
+            req.flash('info', 'Password must be at least 5 characters long!');
             return res.redirect('/register');
         }
         if (!req.body.email.trim() ||
