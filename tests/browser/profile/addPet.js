@@ -4,7 +4,6 @@ const { setupDriver } = require('../utils/setup-driver');
 const ui = require('../utils/ui');
 const loginUtils = require('../utils/login.utils');
 const registerUtils = require('../utils/register.utils');
-
 const async = require('../../../common/async');
 
 describe('In Profile page', () => {
@@ -31,15 +30,22 @@ describe('In Profile page', () => {
     });
 
     afterEach(() => {
-        return driver.quit();
+        driver.quit();
     });
-
 
     describe('User can add pet', () => {
         beforeEach(() => {
             async()
                 .then(() => {
                     return loginUtils.login(username, pass);
+                });
+        });
+
+        it('expect a button for showing profile details to be visible', () => {
+            return async()
+                .then(() => ui.getText('#btn-info'))
+                .then((btnText) => {
+                    expect(btnText).to.contain('Information');
                 });
         });
 

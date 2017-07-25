@@ -4,14 +4,8 @@ const { setupDriver } = require('./utils/setup-driver');
 const webdriver = require('selenium-webdriver');
 const ui = require('../browser/utils/ui');
 
-
-describe('Items routes', () => {
+describe('In Home page', () => {
     let driver = null;
-
-    // let driver =
-    //     new webdriver.Builder()
-    //         .build();
-
     const appUrl = 'http://localhost:3002';
 
     beforeEach(() => {
@@ -21,23 +15,7 @@ describe('Items routes', () => {
     });
 
     afterEach(() => {
-        return driver.quit();
-    });
-
-    it('expect h1 with text "Welcome"', (done) => {
-        driver.get(appUrl)
-            .then(() => {
-                return driver.findElement(
-                    webdriver.By.css('h1')
-                );
-            })
-            .then((el) => {
-                return el.getText();
-            })
-            .then((text) => {
-                expect(text).to.contain('Welcome');
-                done();
-            });
+        driver.quit();
     });
 
     it('expect h1 with text "Welcome"', (done) => {
