@@ -81,7 +81,6 @@ describe('/animals tests', () => {
                     if (err) {
                         return done(err);
                     }
-
                     return done();
                 });
         });
@@ -96,7 +95,6 @@ describe('/animals tests', () => {
                     if (err) {
                         return done(err);
                     }
-
                     return done();
                 });
         });
@@ -123,7 +121,6 @@ describe('/animals tests', () => {
                     if (err) {
                         return done(err);
                     }
-
                     return done();
                 });
         });
