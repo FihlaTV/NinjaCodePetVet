@@ -1,3 +1,3 @@
-window.onload=function () {
+window.onload = function() {
     $('#nav-btn-aboutUs').addClass('active');
 };

@@ -3,6 +3,33 @@ const passport = require('passport');
 const attachTo = (app, data) => {
     const usersController = require('./users.controller').init(data);
 
+    app.get('/chat', (req, res, next) => {
+        if (!req.isAuthenticated()) {
+            return res.redirect('/login');
+        }
+        return next();
+    }, (req, res) => {
+        return data.chats.getAll()
+            .then((chats) => {
+                let user = {};
+
+                if (req.isAuthenticated()) {
+                    user = req.user;
+                    user.isAnonymous = false;
+                } else {
+                    user.isAnonymous = true;
+                }
+
+                const context = {
+                    context: {
+                        user: user,
+                        chats: chats,
+                    },
+                };
+                return res.render('chat', context);
+            });
+    });
+
     app.get('/login', (req, res) => {
         const context = {
             user: {
@@ -83,6 +110,10 @@ const attachTo = (app, data) => {
         }
 
         const user = req.body;
+        data.chats.create({
+            username: user.username,
+            messages: [],
+        });
         return data.users.create(user)
             .then((dbUser) => {
                 return req.login(dbUser, (er) => {

@@ -24,14 +24,14 @@ block body
                                         =context.user._id
                                 p
                                     font(size="3em") Owner Address:
-                                    inline
+                                    inline#ownerAddress
                                         =context.user.address
                                     input(name="address" style='display:none;' autocomplete='off', type='text', required)
                                     img.edit(src='/static/img/icons/edit.png', style='width:15px')
                                     img.ok(src='/static/img/icons/ok.png', style='display:none; width:20px')
                                 p
                                     font(size="3em") Owner Phone:
-                                    inline
+                                    inline#ownerPhone
                                         =context.user.phone
                                     input(name="phone" style='display:none;' autocomplete='off', type='text', required)
                                     img.edit(src='/static/img/icons/edit.png', style='width:15px')

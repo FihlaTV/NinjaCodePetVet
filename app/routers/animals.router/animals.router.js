@@ -80,7 +80,6 @@ const attachTo = (app, data) => {
                 return res.redirect('/profile');
             })
             .catch((err) => {
-                req.flash('error', err);
                 return res.redirect('/profile');
             });
     });

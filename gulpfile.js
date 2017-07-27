@@ -1,20 +1,11 @@
 const gulp = require('gulp');
 const nodemon = require('gulp-nodemon');
-const config = require('./config/app.config');
 const istanbul = require('gulp-istanbul');
 const mocha = require('gulp-mocha');
 const { MongoClient } = require('mongodb');
 
 gulp.task('server', () => {
-    return Promise.resolve()
-        .then(() => require('./db').init(config.connectionString))
-        .then((db) => require('./data').init(db))
-        .then((data) => require('./app').init(data))
-        .then((app) => {
-            app.listen(
-                config.port,
-                () => console.log(`App works on port: ${config.port}`));
-        });
+    return require('./server');
 });
 
 gulp.task('dev', ['server'], () => {
@@ -78,8 +69,8 @@ gulp.task('tests:unit', ['pre-test'], () => {
 gulp.task('tests:browser', ['test-server:start'], () => {
     return gulp.src('./tests/browser/**/*.js')
         .pipe(mocha({
-            reporter: 'nyan',
-            timeout: 10000,
+            reporter: 'list',
+            timeout: 20000,
         }))
         .once('end', () => {
             gulp.start('test-server:stop');

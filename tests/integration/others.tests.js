@@ -1,7 +1,7 @@
 const request = require('supertest');
 
 describe('/other tests', () => {
-    const connectionString = 'mongodb://localhost/PetVetDb';
+    const connectionString = 'mongodb://localhost/PetVetDb-test';
     let app = null;
 
     beforeEach(() => {
@@ -23,7 +23,6 @@ describe('/other tests', () => {
                     if (err) {
                         return done(err);
                     }
-
                     return done();
                 });
         });
@@ -38,7 +37,6 @@ describe('/other tests', () => {
                     if (err) {
                         return done(err);
                     }
-
                     return done();
                 });
         });
@@ -53,7 +51,6 @@ describe('/other tests', () => {
                     if (err) {
                         return done(err);
                     }
-
                     return done();
                 });
         });
@@ -68,7 +65,6 @@ describe('/other tests', () => {
                     if (err) {
                         return done(err);
                     }
-
                     return done();
                 });
         });

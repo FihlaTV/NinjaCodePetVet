@@ -7,13 +7,13 @@ describe('BaseData.getAll()', () => {
         collection: () => { },
     };
 
-    let items = [];
+    let animals = [];
     let ModelClass = null;
     const validator = null;
     let data = null;
 
     const toArray = () => {
-        return Promise.resolve(items);
+        return Promise.resolve(animals);
     };
 
     const find = () => {
@@ -22,10 +22,10 @@ describe('BaseData.getAll()', () => {
         };
     };
 
-    describe('when there are items in db', () => {
+    describe('When there are animals in db', () => {
         describe('with default toViewModel', () => {
             beforeEach(() => {
-                items = [1, 2, 3, 4];
+                animals = ['dog', 'cat', 'dragon', 'horse'];
                 sinon.stub(db, 'collection')
                     .callsFake(() => {
                         return { find };
@@ -41,23 +41,23 @@ describe('BaseData.getAll()', () => {
                 db.collection.restore();
             });
 
-            it('expect to return items', () => {
+            it('expect to return animals', () => {
                 return data.getAll()
                     .then((models) => {
-                        expect(models).to.deep.equal(items);
+                        expect(models).to.deep.equal(animals);
                     });
             });
         });
 
         describe('with custom toViewModel', () => {
             beforeEach(() => {
-                items = [1, 2, 3, 4];
+                animals = ['dog', 'cat', 'dragon', 'horse'];
                 sinon.stub(db, 'collection')
                     .callsFake(() => {
                         return { find };
                     });
                 ModelClass.toViewModel = (model) => {
-                    return model + '1';
+                    return model + 's';
                 };
 
                 // Arrange
@@ -68,11 +68,11 @@ describe('BaseData.getAll()', () => {
                 db.collection.restore();
             });
 
-            it('expect to return items', () => {
+            it('expect to return animals', () => {
                 return data.getAll()
                     .then((models) => {
-                        items.forEach((item) => {
-                            const viewModel = item + '1';
+                        animals.forEach((animal) => {
+                            const viewModel = animal + 's';
                             expect(models).to.contain(viewModel);
                         });
                     });

@@ -2,9 +2,8 @@
   "name": "ninjacodepetvet",
   "version": "1.0.0",
   "description": "pet vet nodeJS app",
-  "main": "",
+  "main": "server.js",
   "scripts": {
-    "start": "",
     "selenium": "selenium-standalone start",
     "unit-test": "./node_modules/.bin/gulp tests:unit",
     "browser-test": "./node_modules/.bin/gulp tests:browser",
@@ -35,6 +34,7 @@
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "pug": "^2.0.0-rc.2",
+    "socket.io": "^2.0.3",
     "typings": "^2.1.1"
   },
   "devDependencies": {
