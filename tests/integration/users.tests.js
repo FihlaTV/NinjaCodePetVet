@@ -62,6 +62,20 @@ describe('/users tests', () => {
         });
     });
 
+    describe('GET /chat', () => {
+        it('expect to return 200 (OK)', (done) => {
+            request(app)
+                .get('/chat')
+                .set('cookie', cookie)
+                .expect(200)
+                .end((err, res) => {
+                    if (err) {
+                        return done(err);
+                    }
+                    return done();
+                });
+        });
+    });
 
     describe('GET /login', () => {
         it('expect to return 200 (OK)', (done) => {
