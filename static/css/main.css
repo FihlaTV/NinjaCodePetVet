@@ -1,3 +1,46 @@
+.date {
+    font-weight: normal;
+    color: black;
+}
+
+.message-bubble {
+    padding: 10px 0px 10px 0px;
+}
+
+.message-bubble:nth-child(even) {
+    background-color: #F5F5F5;
+}
+
+.message-bubble > * {
+    padding-left: 10px;
+}
+
+.panel-body {
+    padding: 0px;
+}
+
+.panel-heading {
+    font-weight: bold;
+    background-color: #c34113 !important;
+    color: white !important;
+}
+
+.row.message-bubble > p{
+    font-size: 1em;
+    font-weight: bold;
+    color: #3e152b;
+}
+
+.row.message-bubble > span{
+    font-size: 1em;
+    color: black
+}
+
+#chat {
+    overflow-y: auto;
+    height: 400px;
+}
+
 #password {
     display: none;
 }
