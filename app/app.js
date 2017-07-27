@@ -45,7 +45,9 @@ const init = (data) => {
             message.date = msg.date;
             message.text = msg.message;
 
-            data.chats.addMessage(message, 'petVet');
+            if (msg.message.trim().length > 0) {
+                data.chats.addMessage(message, 'petVet');
+            }
             io.emit('chat message', msg);
         });
 
