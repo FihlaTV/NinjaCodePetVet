@@ -18,8 +18,8 @@ describe('In Home page', () => {
         driver.quit();
     });
 
-    it('expect h1 with text "Welcome"', (done) => {
-        driver.get(appUrl)
+    it('expect h1 with text "Welcome"', () => {
+        return driver.get(appUrl)
             .then(() => {
                 return driver.findElement(
                     webdriver.By.css('h1')
@@ -30,7 +30,6 @@ describe('In Home page', () => {
             })
             .then((text) => {
                 expect(text).to.contain('Welcome');
-                done();
             });
     });
 });

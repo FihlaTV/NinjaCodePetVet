@@ -81,13 +81,13 @@ describe('In Profile page', () => {
                 });
         });
 
-        it.skip('expect Add Pet button to show a' +
+        it('expect Add Pet button to show a' +
             ' form that enables user to add a pet', () => {
             return async()
                 .then(() => ui.click('#btn-add-pet'))
-                .then(() => ui.waitForMany('input[placeholder="Pet name"]'))
+                .then(() => ui.waitFor('form[name="addPetForm"]'))
                 .then((el) => {
-                    expect(el.attributes.placeholder).to.equal('Pet name');
+                    expect(el).to.exist;
                 });
         });
     });
