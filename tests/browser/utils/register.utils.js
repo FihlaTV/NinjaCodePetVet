@@ -3,10 +3,11 @@ let driver = null;
 const ui = require('./ui');
 const async = require('../../../common/async');
 
-const register = (username, email, pass, phone, address) => {
+const register = (username, fullName, email, pass, phone, address) => {
     return async()
         .then(() => ui.click('#nav-btn-register'))
         .then(() => ui.setValue('input[name="username"]', username))
+        .then(() => ui.setValue('input[name="fullName"]', fullName))
         .then(() => ui.setValue('input[name="email"]', email))
         .then(() => ui.setValue('input[name="password"]', pass))
         .then(() => ui.setValue('input[name="phone"]', phone))

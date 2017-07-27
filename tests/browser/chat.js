@@ -9,6 +9,7 @@ const async = require('../../common/async');
 describe('In Chat page', () => {
     let driver = null;
     const appUrl = 'http://localhost:3002';
+    const fullName = 'Pesho Peshev';
     const username = 'Peshistiya';
     const email = 'someone@some.where';
     const pass = '123456';
@@ -19,7 +20,7 @@ describe('In Chat page', () => {
         async()
             .then(() => {
                 return registerUtils
-                    .register(username, email, pass, phone, address);
+                    .register(username, fullName, email, pass, phone, address);
             });
     });
 

@@ -9,6 +9,7 @@ const async = require('../../common/async');
 describe('In Profile page', () => {
     let driver = null;
     const appUrl = 'http://localhost:3002';
+    const fullName = 'Pesho Peshev';
     const username = 'Peshistiya';
     const email = 'someone@some.where';
     const pass = '123456';
@@ -19,7 +20,7 @@ describe('In Profile page', () => {
         async()
             .then(() => {
                 return registerUtils
-                    .register(username, email, pass, phone, address);
+                    .register(username, fullName, email, pass, phone, address);
             });
     });
 
@@ -68,9 +69,13 @@ describe('In Profile page', () => {
         });
 
         it('expect Profile Info button ' +
-            'to show user\'s phone and address', () => {
+            'to show user\'s full name, phone and address', () => {
             return async()
                 .then(() => ui.click('#btn-info'))
+                .then(() => ui.getText('#fullName'))
+                .then((userFullName) => {
+                    expect(userFullName).to.equal(fullName);
+                })
                 .then(() => ui.getText('#ownerAddress'))
                 .then((ownerAddress) => {
                     expect(ownerAddress).to.equal(address);
