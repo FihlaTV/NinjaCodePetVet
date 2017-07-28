@@ -21,6 +21,7 @@ describe('/animals tests', () => {
                 .post('/register')
                 .send({
                     username: 'pesho',
+                    fullName: 'pesho peshev',
                     email: 'pesho@mail.bg',
                     password: 'password',
                     phone: '1234567890',

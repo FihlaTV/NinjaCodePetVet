@@ -27,6 +27,7 @@ describe('/users tests', () => {
                 .post('/register')
                 .send({
                     username: 'gosho',
+                    fullName: 'gosho goshev',
                     email: 'gosho@mail.bg',
                     password: 'password',
                     phone: '1234567890',
