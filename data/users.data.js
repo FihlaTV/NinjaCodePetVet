@@ -52,6 +52,7 @@ class UsersData extends BaseData {
             { _id: new ObjectID(model._id) },
             {
                 $set: {
+                    fullName: model.fullName,
                     address: model.address,
                     phone: model.phone,
                     password: model.password,

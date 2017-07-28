@@ -60,8 +60,9 @@ $edit.on('click', (event) => {
         password.hide();
 
         let currentId = $(div).children()[0].innerText;
-        let ownerAddress = $(div).children()[1].innerText.split(':')[1];
-        let ownerPhone = $(div).children()[2].innerText.split(':')[1];
+        let fullName = $(div).children()[1].innerText.split(':')[1];
+        let ownerAddress = $(div).children()[2].innerText.split(':')[1];
+        let ownerPhone = $(div).children()[3].innerText.split(':')[1];
         let ownerPassword = password.text();
 
         $.ajax({
@@ -70,6 +71,7 @@ $edit.on('click', (event) => {
             contentType: "application/json",
             data: JSON.stringify({
                 _id: currentId,
+                fullName: fullName,
                 address: ownerAddress,
                 phone: ownerPhone,
                 password: ownerPassword,
