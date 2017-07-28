@@ -88,6 +88,11 @@ const attachTo = (app, data) => {
             req.flash('info', 'Username must be at least 5 characters long!');
             return res.redirect('/register');
         }
+        if (!req.body.fullName.trim() ||
+            req.body.fullName.trim().length < 10) {
+            req.flash('info', 'Full name must be at least 10 characters long!');
+            return res.redirect('/register');
+        }
         if (!req.body.password.trim() ||
             req.body.password.trim().length < 5) {
             req.flash('info', 'Password must be at least 5 characters long!');
@@ -110,10 +115,6 @@ const attachTo = (app, data) => {
         }
 
         const user = req.body;
-        data.chats.create({
-            username: user.username,
-            messages: [],
-        });
         return data.users.create(user)
             .then((dbUser) => {
                 return req.login(dbUser, (er) => {

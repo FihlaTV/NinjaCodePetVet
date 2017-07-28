@@ -51,7 +51,8 @@ describe('In Chat page', () => {
                 });
         });
 
-        it('expect when user enter a message and click on send button, the message to appear in the chat', () => {
+        it('expect when user enter a message and click on send button,' +
+            ' the message to appear in the chat', () => {
             const msg = 'Hello, World!';
 
             return async()
@@ -64,7 +65,8 @@ describe('In Chat page', () => {
                 });
         });
 
-        it('expect when user write a message in the chat, the username to be shown with the message', () => {
+        it('expect when user write a message in the chat,' +
+            ' the username to be shown with the message', () => {
             const msg = 'Hello, World!';
 
             return async()
