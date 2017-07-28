@@ -29,6 +29,7 @@ $(() => {
         petsList.hide();
         warning.hide();
 
+        let foundCounter = 0;
         for (let i = 0; i < petsList.length; i += 1) {
             let username = petsList[i].childNodes[4].innerText.split(':')[1];
             if (inputValue.length === 0) {
@@ -38,6 +39,11 @@ $(() => {
             else if (inputValue === username) {
                 petsList[i].style.display = "block";
                 isFound = true;
+                foundCounter += 1;
+                if (foundCounter === 1) {
+                    $(petsList[i]).children('.ownerAddress').show();
+                    $(petsList[i]).children('.ownerPhone').show();
+                }
                 spacing.show();
             }
             else if (i === petsList.length - 1 && !isFound) {

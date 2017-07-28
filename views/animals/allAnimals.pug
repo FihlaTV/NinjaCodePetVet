@@ -38,14 +38,14 @@ block body
                 p(style='display:none;')
                     inline.ownerId
                         =pet.ownerId
-                p
+                p.ownerAddress(style='display:none;')
                     strong Owner Address:
                     inline
                         =pet.ownerAddress
                     input(name="ownerAddress" style='display:none;')
                     img.edit(src='/static/img/icons/edit.png', style='width:15px')
                     img.ok(src='/static/img/icons/ok.png', style='display:none; width:17px')
-                p
+                p.ownerPhone(style='display:none;')
                     strong Owner Phone:
                     inline
                         =pet.ownerPhone
