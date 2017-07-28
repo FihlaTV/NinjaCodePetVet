@@ -23,17 +23,33 @@ class AnimalsData extends BaseData {
     }
 
     updateAnimal(model) {
-        this.collection.updateOne(
-            { _id: new ObjectID(model._id) },
+        this.collection.updateMany(
+            { 'ownerId': model.ownerId },
             {
                 $set: {
                     ownerAddress: model.ownerAddress,
                     ownerPhone: model.ownerPhone,
-                    checkUp: model.checkUp,
                 },
-            }).catch((err) => {
-            return err;
-        });
+            })
+            .then(() => {
+                this.collection.updateOne(
+                    { _id: new ObjectID(model._id) },
+                    {
+                        $set: {
+                            checkUp: model.checkUp,
+                        },
+                    });
+            })
+            .then(() => {
+                this.db.collection('users').updateOne(
+                    { _id: new ObjectID(model.ownerId) },
+                    {
+                        $set: {
+                            address: model.ownerAddress,
+                            phone: model.ownerPhone,
+                        },
+                    });
+            });
     }
 }
 

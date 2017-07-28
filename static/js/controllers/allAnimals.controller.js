@@ -91,9 +91,10 @@ $edit.on('click', (event) => {
         $editButton.show();
 
         let currentId = $(li)[0].id;
-        let ownerAddress = $(li).children()[5].innerText.split(':')[1];
-        let ownerPhone = $(li).children()[6].innerText.split(':')[1];
-        let checkUp = $(li).children()[7].innerText.split(':')[1];
+        let ownerId = $(li).children()[5].innerText;
+        let ownerAddress = $(li).children()[6].innerText.split(':')[1];
+        let ownerPhone = $(li).children()[7].innerText.split(':')[1];
+        let checkUp = $(li).children()[8].innerText.split(':')[1];
 
         $.ajax({
             method: "PUT",
@@ -101,6 +102,7 @@ $edit.on('click', (event) => {
             contentType: "application/json",
             data: JSON.stringify({
                 _id: currentId,
+                ownerId: ownerId,
                 ownerAddress: ownerAddress,
                 ownerPhone: ownerPhone,
                 checkUp: checkUp,

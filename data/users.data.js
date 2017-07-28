@@ -57,9 +57,17 @@ class UsersData extends BaseData {
                     phone: model.phone,
                     password: model.password,
                 },
-            }).catch((err) => {
-            return err;
-        });
+            })
+            .then(() => {
+                this.db.collection('animals').updateMany(
+                    { 'ownerId': model._id },
+                    {
+                        $set: {
+                            ownerAddress: model.address,
+                            ownerPhone: model.phone,
+                        },
+                    });
+            });
     }
 }
 
