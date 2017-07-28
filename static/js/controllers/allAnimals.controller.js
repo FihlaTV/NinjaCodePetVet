@@ -78,8 +78,8 @@ $edit.on('click', (event) => {
         inlineText.show();
     });
 
-    let updateBtn = li.lastElementChild;
-    updateBtn.style.display = "block";
+    let updateBtn = $(li.lastElementChild).prev();
+    updateBtn.show();
 
     $(updateBtn).on('click', (event) => {
         event.preventDefault();
