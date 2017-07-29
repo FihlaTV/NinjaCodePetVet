@@ -10,10 +10,9 @@ $(() => {
     let username = $('#username').text();
     let message;
 
-    let date = new Date();
-    let currentDate = `${date.getHours()}:${date.getMinutes()} - ${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
-
     $('#sendBtn').on('click', () => {
+        let date = new Date();
+        let currentDate = `${date.getHours()}:${date.getMinutes()} - ${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
         message = input.val().trim();
         socket.emit('chat message', { 'user': username, 'message': message, 'date': currentDate });
         input.val('');
@@ -21,6 +20,8 @@ $(() => {
 
     input.on('keydown', (event) => {
         if (event.which === 13) {
+            let date = new Date();
+            let currentDate = `${date.getHours()}:${date.getMinutes()} - ${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
             message = input.val().trim();
             socket.emit('chat message', { 'user': username, 'message': message, 'date': currentDate });
             input.val('');
