@@ -4,6 +4,7 @@
   "description": "pet vet nodeJS app",
   "main": "server.js",
   "scripts": {
+    "start" : "node server.js",
     "selenium": "selenium-standalone start",
     "unit-test": "./node_modules/.bin/gulp tests:unit",
     "browser-test": "./node_modules/.bin/gulp tests:browser",
