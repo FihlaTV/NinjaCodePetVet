@@ -13,10 +13,10 @@ class UsersData extends BaseData {
         })
             .then((user) => {
                 if (!user) {
-                    throw new Error('Invalid user!');
+                    throw new Error('Invalid username or password!');
                 }
                 if (user.password !== password) {
-                    throw new Error('Invalid password!');
+                    throw new Error('Invalid username or password!');
                 }
                 return true;
             });
