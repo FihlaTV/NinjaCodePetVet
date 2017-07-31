@@ -1,19 +1,18 @@
 const { expect } = require('chai');
 const sinon = require('sinon');
 
-// const BaseData = require('../../../data/base/base.data');
 const UsersData = require('../../../data/users.data');
-const User = require('../../../models/user.model');
 
 describe('UsersData', () => {
     const db = {
-        collection: () => { },
+        collection: () => {
+        },
     };
 
     let users = [];
-    let animals = ['dragon', 'ant'];
+    const animals = ['dragon', 'ant'];
     let ModelClass = null;
-    let validator = null;
+    const validator = null;
     let data = null;
 
     const searchedUser = {
@@ -42,12 +41,12 @@ describe('UsersData', () => {
 
     const findById = (id) => {
         return Promise.resolve(users[1]);
-    }
+    };
 
     const updateUser = (userId, username, password) => {
         let updatedUsers = 0;
 
-        for (let u of users) {
+        for (const u of users) {
             if (userId === u._id) {
                 u.username = username;
                 u.password = password;
@@ -60,7 +59,7 @@ describe('UsersData', () => {
 
     const checkPassword = (username, password) => {
         let isValid = false;
-        for (let user of users) {
+        for (const user of users) {
             if (user.username === username && user.password === password) {
                 isValid = true;
             }
@@ -74,20 +73,27 @@ describe('UsersData', () => {
             _id: '596b1d2cfef2e82704d679e4',
             username: 'userOne',
             password: '123456',
-            animals: animals
+            animals: animals,
         },
-        {
-            _id: '596b2a0ae6239d22044adb29',
-            username: 'userTwo',
-            password: '654321',
-        }];
+            {
+                _id: '596b2a0ae6239d22044adb29',
+                username: 'userTwo',
+                password: '654321',
+            }];
 
         ModelClass = class {
         };
 
         sinon.stub(db, 'collection')
             .callsFake(() => {
-                return { findOne, find, create, findById, updateUser, checkPassword };
+                return {
+                    findOne,
+                    find,
+                    create,
+                    findById,
+                    updateUser,
+                    checkPassword,
+                };
             });
 
         data = new UsersData(db, ModelClass, validator);
@@ -99,21 +105,21 @@ describe('UsersData', () => {
 
 
     describe('create()', () => {
-        it('expect to create user if there is not user with that username', () => {
+        it('expect to create user if there is not user ' +
+            'with that username', () => {
             const userToCreate = {
                 username: 'testUser',
                 password: '111111',
             };
 
-            let currentLength = users.length;
-            return data.collection.create(userToCreate);
+            const currentLength = users.length;
+            data.collection.create(userToCreate);
             expect(users).to.lengthOf(currentLength + 1);
         });
     });
 
     describe('findUserByUsername()', () => {
         it('expect to return users if users were found', () => {
-
             return data.collection.findOne('user')
                 .then((found) => {
                     expect(found).to.deep.eql(searchedUser);
@@ -121,7 +127,6 @@ describe('UsersData', () => {
         });
 
         it('expect to return null if users were not found', () => {
-
             return data.collection.findOne('pesho')
                 .then((user) => {
                     expect(user).to.not.equal(searchedUser);
@@ -140,7 +145,9 @@ describe('UsersData', () => {
 
     describe('updateUser()', () => {
         it('expect to change users\'s data', () => {
-            return data.collection.updateUser('596b2a0ae6239d22044adb29', 'PeshoNeEGosho', 'BULGARIA')
+            return data.collection
+                .updateUser('596b2a0ae6239d22044adb29',
+                    'PeshoNeEGosho', 'BULGARIA')
                 .then((counter) => {
                     expect(counter).to.eql(1);
                 });

@@ -4,7 +4,8 @@ const BaseData = require('../../../data/base/base.data');
 
 describe('BaseData.getAll()', () => {
     const db = {
-        collection: () => { },
+        collection: () => {
+        },
     };
 
     let animals = [];
