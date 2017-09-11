@@ -14,6 +14,8 @@
 Pet Vet is a Node.js app for pets care and for connecting pet owner with our vets. Visitors can see our location and can bring their pets to us for check up. Registered users has profiles and can add their pets to profile. Also they can chat with each other and see when vet must check up their pets.
 
 
+**Project description:** [HERE](./docs/Project-description.md)
+
 **Website of the application:** [HERE](https://ninjavet.herokuapp.com/)
 
 **Video of the application:** [HERE](https://youtu.be/O6CfPSR9G7Q)
